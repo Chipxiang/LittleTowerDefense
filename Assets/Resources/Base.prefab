@@ -9,47 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1241949169412294}
+  m_RootGameObject: {fileID: 1452943678680830}
   m_IsPrefabParent: 1
---- !u!1 &1241949169412294
+--- !u!1 &1452943678680830
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4402227857795138}
-  - component: {fileID: 33192948315388588}
-  - component: {fileID: 136487187485364938}
-  - component: {fileID: 23996557531837182}
-  - component: {fileID: 114908947054302850}
-  - component: {fileID: 65748359979228818}
+  - component: {fileID: 4126904761724164}
+  - component: {fileID: 33120461486606394}
+  - component: {fileID: 136055242226948776}
+  - component: {fileID: 23217734803566544}
+  - component: {fileID: 114600629926753008}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4402227857795138
+--- !u!4 &4126904761724164
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1241949169412294}
+  m_GameObject: {fileID: 1452943678680830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.2, y: -3.3, z: -22.244751}
-  m_LocalScale: {x: 0.2, y: 0.1, z: 0.2}
+  m_LocalPosition: {x: -4.75, y: 1.36, z: 6.580312}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23996557531837182
+--- !u!23 &23217734803566544
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1241949169412294}
+  m_GameObject: {fileID: 1452943678680830}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4f17bc94fea3ca4469a30e20918be798, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,45 +75,30 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33192948315388588
+--- !u!33 &33120461486606394
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1241949169412294}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65748359979228818
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1241949169412294}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &114908947054302850
+  m_GameObject: {fileID: 1452943678680830}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114600629926753008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1241949169412294}
+  m_GameObject: {fileID: 1452943678680830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b18f1d9db6435438da721a8f58b4cac4, type: 3}
+  m_Script: {fileID: 11500000, guid: f1aa08a9b337d7a4d8cbf03b39f5e219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
-  Target: {fileID: 0}
-  Speed: 0
---- !u!136 &136487187485364938
+--- !u!136 &136055242226948776
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1241949169412294}
+  m_GameObject: {fileID: 1452943678680830}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

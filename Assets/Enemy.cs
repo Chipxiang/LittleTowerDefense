@@ -6,11 +6,13 @@ public class Enemy : MonoBehaviour
 {
 	public float Health;
 	public float Damage;
-	public float Speed; 
-	public Transform Target = GameObject.Find("Base").transform;
-	// public static EnemySpawner Manager;
-	
-	public void Initialize ()
+	public float Speed;
+    // public static EnemySpawner Manager;
+    void Start()
+    {
+        var target = FindObjectOfType<Base>().transform;
+    }
+    public void Initialize ()
 	{
 		Health = 25f;
 		Damage = 2f;
@@ -18,6 +20,7 @@ public class Enemy : MonoBehaviour
 	}
 	
 	internal void OnCollisionEnter (Collision other) {
+        Debug.Log("Bingo!");
 		string name = other.gameObject.name;
 		// print("THIS " + name);
 		if(name == "Base")
@@ -34,6 +37,7 @@ public class Enemy : MonoBehaviour
 	
 	void FixedUpdate() {
 		float step = Speed * Time.deltaTime;
-		transform.position = Vector3.MoveTowards(transform.position, new Vector3(4,0,0), step);
-	}
+		//transform.position = Vector3.MoveTowards(transform.position, Target.position, step);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(4,0,0), step);
+    }
 }

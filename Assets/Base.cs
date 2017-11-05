@@ -8,9 +8,8 @@ public class Base : MonoBehaviour {
 	void Start () {
         this.transform.position = new Vector3(4f, 0f, - 0.5f);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        // Update is called once per frame
+        void Update () {
+
+    }
 }

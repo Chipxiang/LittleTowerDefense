@@ -16,10 +16,10 @@ public class Enemy : MonoBehaviour
 	{
 		Health = 25f;
 		Damage = 2f;
-		Speed = 0.2f;
+		Speed = 0.5f;
 	}
 	
-	internal void OnCollisionEnter (Collision other) {
+	 void OnCollisionEnter (Collision other) {
         Debug.Log("Bingo!");
 		string name = other.gameObject.name;
 		// print("THIS " + name);
@@ -32,6 +32,10 @@ public class Enemy : MonoBehaviour
 		{ 
 			//var damage = other.gameObject.GetComponent<Bullet>().whatever;
 			//Health -= damage;
+            if (Health<=0)
+            {
+                Destroy(gameObject);
+            }
 		}
 	}
 	
@@ -39,5 +43,6 @@ public class Enemy : MonoBehaviour
 		float step = Speed * Time.deltaTime;
 		//transform.position = Vector3.MoveTowards(transform.position, Target.position, step);
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(4,0,0), step);
+        Debug.Log(transform.position);
     }
 }

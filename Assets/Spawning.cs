@@ -32,7 +32,6 @@ namespace Assets.Code
             var tra = gameObject.GetComponent<Transform>();
             var pos = tra.position;
             //if (time < _lastspawn + SpawnTime) { return; }
-            Debug.Log(1);
             ForceSpawn(pos);
         }
 

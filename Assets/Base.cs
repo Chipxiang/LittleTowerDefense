@@ -16,8 +16,15 @@ public class Base : MonoBehaviour {
             SliderManager.DeductHealth(5f);
         }
     }
+<<<<<<< HEAD
     // Update is called once per frame
     void Update () {
 		
 	}
+=======
+        // Update is called once per frame
+        void Update () {
+
+    }
+>>>>>>> 096f3840b56728d47b7456daa6ae4343884777cd
 }

@@ -7,10 +7,12 @@ public class Enemy : MonoBehaviour
 	public float Health;
 	public float Damage;
 	public float Speed;
+    Transform Target;
     // public static EnemySpawner Manager;
     void Start()
     {
-        var target = FindObjectOfType<Base>().transform;
+        Target = FindObjectOfType<Base>().transform;
+        Debug.Log(Target.position);
     }
     public void Initialize ()
 	{
@@ -41,8 +43,7 @@ public class Enemy : MonoBehaviour
 	
 	void FixedUpdate() {
 		float step = Speed * Time.deltaTime;
-		//transform.position = Vector3.MoveTowards(transform.position, Target.position, step);
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(4,0,0), step);
-        Debug.Log(transform.position);
+		transform.position = Vector3.MoveTowards(transform.position, Target.position, step);
+        //transform.position = Vector3.MoveTowards(transform.position, new Vector3(4,0,0), step);
     }
 }

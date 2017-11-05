@@ -20,7 +20,6 @@ public class Block : MonoBehaviour {
     { 
         if(Input.GetMouseButtonDown(1))
         {
-            Debug.Log("11111");
 
         }
 

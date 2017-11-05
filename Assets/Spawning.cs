@@ -14,9 +14,9 @@ namespace Assets.Code
         private Transform _holder;
         internal void Start()
         {
-            //this.transform.position = new Vector3(0f, 4f, -1.5f);
+            this.transform.position = new Vector3(0f, 4f, -1.5f);
             _EnemyPrefab = Resources.Load("Enemy");
-            _holder = gameObject.GetComponent<Transform>();
+            _holder = this.transform;
             _lastspawn = 0f;
             //Asteroid.Manager = this;
         }
@@ -30,7 +30,7 @@ namespace Assets.Code
         {
             //if (_holder.childCount >= MaxAsteroidCount) { return; }
             float time = Time.time;
-            var tra = gameObject.GetComponent<Transform>();
+            var tra = this.transform;
             var pos = tra.position;
             //if (time < _lastspawn + SpawnTime) { return; }
             ForceSpawn(pos);
@@ -38,7 +38,7 @@ namespace Assets.Code
 
         public void ForceSpawn(Vector2 pos)
         {
-            Quaternion rotation = new Quaternion();
+            Quaternion rotation = Quaternion.Euler(-90,0,0);
             var ast = (GameObject)Object.Instantiate(_EnemyPrefab, pos, rotation, _holder);
             var s = ast.GetComponentInChildren<Enemy>();
             s.Initialize();

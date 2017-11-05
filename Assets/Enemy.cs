@@ -12,17 +12,16 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         Target = FindObjectOfType<Base>().transform;
-        Debug.Log(Target.position);
     }
     public void Initialize ()
 	{
+        transform.position = new Vector3(0, 4, -0.7f);
 		Health = 25f;
-		Damage = 2f;
+		Damage = 5f;
 		Speed = 0.5f;
 	}
 	
-	 void OnCollisionEnter (Collision other) {
-        Debug.Log("Bingo!");
+	 internal void OnCollisionEnter (Collision other) {
 		string name = other.gameObject.name;
 		// print("THIS " + name);
 		if(name == "Base")

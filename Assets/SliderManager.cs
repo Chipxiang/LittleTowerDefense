@@ -7,7 +7,8 @@ public class SliderManager : MonoBehaviour {
     private static Slider slider;
     // Use this for initialization
     internal void Start () {
-		slider = GetComponent<Slider>();
+        health = 100;
+		slider = this.GetComponent<Slider>();
         UpdateSlider();
     }
     public static void DeductHealth(float points)

@@ -22,21 +22,25 @@ public class Enemy : MonoBehaviour
 	}
 	
 	 internal void OnCollisionEnter (Collision other) {
-		string name = other.gameObject.name;
-		// print("THIS " + name);
-		if(name == "Base")
+		if(other.gameObject.GetComponent<Base>())
 		{
 			// HitBase();
 			Destroy(gameObject);
 		}
-		if(name == "Bullet")
-		{ 
-			//var damage = other.gameObject.GetComponent<Bullet>().whatever;
-			//Health -= damage;
-            if (Health<=0)
+		if(other.gameObject.GetComponentInChildren<Bullet>())
+		{
+            if (other.gameObject.GetComponentInChildren<Bullet>().flag)
             {
-                Destroy(gameObject);
+                float damage = other.gameObject.GetComponentInChildren<Bullet>().damage;
+                Health -= damage;
+                Debug.Log(Health);
+                if (Health <= 0)
+                {
+                    Destroy(gameObject);
+                }
+                other.gameObject.GetComponentInChildren<Bullet>().flag = false;
             }
+			
 		}
 	}
 	

@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
+>>>>>>> d4cd2a4db6598c34c283d5f1112ec2b06c510308
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -858,8 +862,13 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
+<<<<<<< HEAD
   far clip plane: 100
   field of view: 36
+=======
+  far clip plane: 150
+  field of view: 8.708754
+>>>>>>> d4cd2a4db6598c34c283d5f1112ec2b06c510308
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -873,7 +882,7 @@ Camera:
   m_HDR: 0
   m_AllowMSAA: 1
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
@@ -883,6 +892,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840162762}
+<<<<<<< HEAD
   m_LocalRotation: {x: -0.3420201, y: 0, z: 0, w: 0.9396927}
   m_LocalPosition: {x: 1.27, y: -3.87, z: -6.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -892,10 +902,22 @@ Transform:
   m_LocalEulerAnglesHint: {x: -40, y: 0, z: 0}
 --- !u!114 &840162768
 MonoBehaviour:
+=======
+  m_LocalRotation: {x: -0.347757, y: 0.010981805, z: -0.0040735337, w: 0.93751156}
+  m_LocalPosition: {x: 0.8, y: -37.9, z: -46.8}
+  m_LocalScale: {x: -1.821563, y: 1.1962495, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -40.690002, y: 1.7700001, z: -1.154}
+--- !u!119 &840162768
+Projector:
+>>>>>>> d4cd2a4db6598c34c283d5f1112ec2b06c510308
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840162762}
+<<<<<<< HEAD
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba3edc2aa5b84f340a0351977e111a77, type: 3}
@@ -908,6 +930,20 @@ MonoBehaviour:
   scrollSpeed: 5
   minY: 10
   maxY: 80
+=======
+  m_Enabled: 0
+  serializedVersion: 2
+  m_NearClipPlane: 0.1
+  m_FarClipPlane: 100
+  m_FieldOfView: 60
+  m_AspectRatio: 1
+  m_Orthographic: 0
+  m_OrthographicSize: 10
+  m_Material: {fileID: 0}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
+>>>>>>> d4cd2a4db6598c34c283d5f1112ec2b06c510308
 --- !u!1001 &859739426
 Prefab:
   m_ObjectHideFlags: 0

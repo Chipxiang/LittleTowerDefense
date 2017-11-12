@@ -6,7 +6,7 @@ public class Base : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        this.transform.position = new Vector3(4f, 0f, -0.7f);
+        this.transform.position = new Vector3(4f, 0.7f, 0f);
     }
 
     // Use this for initialization

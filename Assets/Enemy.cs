@@ -13,13 +13,14 @@ public class Enemy : MonoBehaviour
     // public static EnemySpawner Manager;
     void Start()
     {
-        Target = FindObjectOfType<Base>().transform;
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.destination = Target.position;
+        
     }
     public void Initialize ()
     {
-        transform.position = new Vector3(0, 0.7f, 4);
+        Target = FindObjectOfType<Base>().transform;
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.destination = Target.position;
+        transform.position = new Vector3(0, 0.7f, 4.5f);
         Health = 10000f;
         Damage = 5f;
         Speed = 0.5f;

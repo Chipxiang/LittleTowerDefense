@@ -7,7 +7,8 @@ public class Enemy : MonoBehaviour
   public float Health;
   public float Damage;
   public float Speed;
-    Transform Target;
+  public int valve;
+        Transform Target;
     // public static EnemySpawner Manager;
     void Start()
     {
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour
     Health = 25f;
     Damage = 5f;
     Speed = 0.5f;
+    valve = 10;
   }
 
    internal void OnCollisionEnter (Collision other) {
@@ -37,6 +39,7 @@ public class Enemy : MonoBehaviour
                 if (Health <= 0)
                 {
                     Destroy(gameObject);
+                    MoneyManager.AddMoney(valve);
                 }
                 other.gameObject.GetComponentInChildren<Bullet>().flag = false;
             }

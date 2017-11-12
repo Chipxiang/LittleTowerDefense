@@ -3,39 +3,25 @@ using UnityEngine.UI;
 
 namespace Assets.Code.Menus
 {
-    public partial class MenuManager
-    {
-        private class Mainmenu : Menu
+       public class Mainmenu
         {
-            private readonly Object _menu;
-            public Mainmenu()
+            private static Object _menu;
+             public Mainmenu(Transform pos,bool a,bool b)
             {
-                _menu = Resources.Load("Menus/Mainmenu");
-                Go = GameObject.Instantiate(_menu) as GameObject;
-                // Debug.Log(Go.name);
-                //Go.AddComponent<Button>();
-                InitializeButtons();
+                _menu = Resources.Load("Menu/Mainmenu");
+                var can = Object.FindObjectOfType<Canvas>();
+                Transform tmp = can.GetComponent<Transform>();
+                var newmenu = (GameObject)Object.Instantiate(_menu, pos.position, pos.rotation, tmp);
                 // TODO fill me in
             }
 
             /// <summary>
             /// Add listeners to the MainMenu buttons
             /// </summary>
-            private void InitializeButtons()
+            private void InitializeButtons(bool a,bool b)
             {
-                var newb = Go.GetComponentsInChildren<Button>();
-                foreach (Button but in newb)
-                {
-                    if (but.name == "build1") { }
-                    //build a tower
-
-                    if (but.name == "build2") { }
-                        
-                }
-                Go.transform.SetParent(Canvas, false);//Canvas come from the UIma.cs.
-
-                //newb.onClick.AddListener(() => Game.Ctx.StartGame());
-                // TODO fill me in
+                if (a && b)
+                { }
             }
 
 
@@ -44,4 +30,3 @@ namespace Assets.Code.Menus
 
         }
     }
-}

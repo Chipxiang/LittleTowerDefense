@@ -23,5 +23,10 @@ namespace Assets.Code.Menus
         {
 
         }
+        private void OnMouseDown()
+        {
+            
+
+        }
     }
 }

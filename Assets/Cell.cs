@@ -9,19 +9,25 @@ namespace Assets.Code.Menus
     {
         public static bool built_flag;
         public static bool path_flag;
-
+        Transform tmp;
         // Use this for initialization
         void Start()
         {
             built_flag = true;
             path_flag = true;
-
+            tmp = gameObject.GetComponent<Transform>();
         }
 
         // Update is called once per frame
         void Update()
         {
 
+        }
+        private void OnMouseDown()
+        {
+            Debug.Log("click");
+            Mainmenu me;
+            me = new Mainmenu(tmp.transform, built_flag, path_flag);
         }
     }
 }

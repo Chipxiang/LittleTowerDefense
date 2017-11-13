@@ -3,45 +3,39 @@ using UnityEngine.UI;
 
 namespace Assets.Code.Menus
 {
-    public partial class MenuManager
-    {
-        private class Mainmenu : Menu
+        public class Mainmenu 
         {
             private readonly Object _menu;
-            public Mainmenu()
+            GameObject menu;
+            public Mainmenu(Transform pos,bool a,bool b)
             {
-                _menu = Resources.Load("Menus/Mainmenu");
-                Go = GameObject.Instantiate(_menu) as GameObject;
-                // Debug.Log(Go.name);
-                //Go.AddComponent<Button>();
-                InitializeButtons();
+                _menu = Resources.Load("Menu/Mainmenu");
+                Camera maincam = GameObject.FindObjectOfType<Camera>();
+                var scr = GameObject.FindObjectOfType<Canvas>();
+                Transform tran = scr.GetComponent<Transform>();
+                Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
+                menu = (GameObject)GameObject.Instantiate(_menu, screenPos,pos.rotation, tran);
+                InitializeButtons( menu);
                 // TODO fill me in
             }
 
-            /// <summary>
-            /// Add listeners to the MainMenu buttons
-            /// </summary>
-            private void InitializeButtons()
+        /// <summary>
+        /// Add listeners to the MainMenu buttons
+        /// </summary>
+        private void InitializeButtons(GameObject menu)
+        {
+            var newb = menu.GetComponentInChildren<Button>();
+
+            if (newb.name == "Tower1")
             {
-                var newb = Go.GetComponentsInChildren<Button>();
-                foreach (Button but in newb)
-                {
-                    if (but.name == "build1") { }
-                    //build a tower
-
-                    if (but.name == "build2") { }
-                        
-                }
-                Go.transform.SetParent(Canvas, false);//Canvas come from the UIma.cs.
-
-                //newb.onClick.AddListener(() => Game.Ctx.StartGame());
-                // TODO fill me in
+                newb.onClick.AddListener(test);
             }
-
-
-
-
+            }
+        void test()
+        {
+            Debug.Log("rua");
+            Object.Destroy(menu);
 
         }
+        }
     }
-}

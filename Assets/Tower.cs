@@ -30,32 +30,6 @@ public class Tower : MonoBehaviour {
     }
     // Update is called once per frame
     void Update() {
-        /*RaycastHit[] hitinfo;
-        var layermask = 1 << 8;
-        if (Physics.SphereCast(transform.position, 0.5f, transform.forward, out hitinfo, 1.5f, layermask))
-        {
-            Vector3 relativePos = hitinfo.transform.position - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(relativePos, transform.up);
-            transform.rotation = rotation;
-            GetComponentInChildren<Gun>().FireAt(hitinfo.transform);
-        }
-        hitinfo = Physics.SphereCastAll(transform.position, 0.5f, transform.forward, 1.5f, layermask);
-        if (hitinfo.Length != 0)
-        {
-            int nearest = 0;
-            for (int i = 0; i < hitinfo.Length; i++)
-            {
-                if (hitinfo[i].distance <= hitinfo[nearest].distance)
-                {
-                    nearest = i;
-                }
-            }
-            Vector3 relativePos = hitinfo[nearest].transform.position - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(relativePos, transform.up);
-            transform.rotation = rotation;
-            GetComponentInChildren<Gun>().FireAt(hitinfo[nearest].transform);
-        }*/
         TurnToEnemy();
-
     }
 }

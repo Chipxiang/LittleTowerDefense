@@ -26,12 +26,13 @@ public class Cameracc : MonoBehaviour
 
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
-            
-            transform.Translate(Vector3.up*0.01f * panSpeed * Time.deltaTime, Space.World);
+
+            transform.Translate(Vector3.forward *0.01f * panSpeed * Time.deltaTime, Space.World);
         }
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
-        {
-            transform.Translate(Vector3.down * 0.01f* panSpeed * Time.deltaTime, Space.World);
+        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness){
+
+            transform.Translate(Vector3.back *0.01f* panSpeed * Time.deltaTime, Space.World);
+        
         }
         if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
         {
@@ -45,14 +46,13 @@ public class Cameracc : MonoBehaviour
         }
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-
-            transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.down * panSpeed * Time.deltaTime, Space.World);
             //Debug.Log(transform.position);
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-
-            transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.up * panSpeed * Time.deltaTime, Space.World);
+            
            // Debug.Log(transform.position);
         }
 

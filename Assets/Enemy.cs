@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
   public float Damage;
   public float Speed;
   public int valve;
-        Transform Target;
+    private NavMeshAgent agent;
+    private Transform Target;
     // public static EnemySpawner Manager;
     void Start()
     {
@@ -18,13 +19,14 @@ public class Enemy : MonoBehaviour
     public void Initialize ()
     {
         Target = FindObjectOfType<Base>().transform;
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.destination = Target.position;
-        transform.position = new Vector3(0, 0.7f, 4.5f);
+        this.transform.position = new Vector3(0, 1, 4);
         Health = 10000f;
         Damage = 5f;
         Speed = 0.5f;
         valve = 10;
+        this.agent = GetComponent<NavMeshAgent>();
+        agent.destination = Target.position;
+        Debug.Log(this.transform.position);
     }
 
    internal void OnCollisionEnter (Collision other) {
@@ -39,7 +41,6 @@ public class Enemy : MonoBehaviour
             {
                 float damage = other.gameObject.GetComponentInChildren<Bullet>().damage;
                 Health -= damage;
-                Debug.Log(Health);
                 if (Health <= 0)
                 {
                     Destroy(gameObject);
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour
     }
 
     void FixedUpdate() {
+        Debug.Log(this.transform.position);
         //float step = Speed * Time.deltaTime;
         //transform.position = Vector3.MoveTowards(transform.position, Target.position, step);
         //transform.position = Vector3.MoveTowards(transform.position, new Vector3(4,0,0), step);

@@ -14,7 +14,7 @@ namespace Assets.Code
         private Transform _holder;
         internal void Start()
         {
-            this.transform.position = new Vector3(0f, 1f, 4f);
+            this.transform.position = new Vector3(0f, 0.7f, 4f);
             _EnemyPrefab = Resources.Load("Enemy");
             _holder = this.transform;
             _lastspawn = 0f;
@@ -36,7 +36,7 @@ namespace Assets.Code
             ForceSpawn(pos);
         }
 
-        public void ForceSpawn(Vector2 pos)
+        public void ForceSpawn(Vector3 pos)
         {
             Quaternion rotation = Quaternion.Euler(0,0,0);
             var ast = (GameObject)Object.Instantiate(_EnemyPrefab, pos, rotation, _holder);

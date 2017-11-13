@@ -14,7 +14,7 @@ namespace Assets.Code
         private Transform _holder;
         internal void Start()
         {
-            this.transform.position = new Vector3(0, 0.7f, 4);
+            this.transform.position = new Vector3(0f, 1f, 4f);
             _EnemyPrefab = Resources.Load("Enemy");
             _holder = this.transform;
             _lastspawn = 0f;

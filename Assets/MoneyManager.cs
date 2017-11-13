@@ -9,7 +9,7 @@ public class MoneyManager : MonoBehaviour
         internal void Start()
         {
 
-            money = GetComponent<Text>();
+     money = GetComponent<Text>();
             CurrentMoney = 50;
             UpdateScore();
         }

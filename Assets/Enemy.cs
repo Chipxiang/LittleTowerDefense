@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
         valve = 10;
         this.agent = GetComponent<NavMeshAgent>();
         agent.destination = Target.position;
-        Debug.Log(this.transform.position);
+// Debug.Log(this.transform.position);
     }
 
    internal void OnCollisionEnter (Collision other) {
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
     }
 
     void FixedUpdate() {
-        Debug.Log(this.transform.position);
+        //Debug.Log(this.transform.position);
         //float step = Speed * Time.deltaTime;
         //transform.position = Vector3.MoveTowards(transform.position, Target.position, step);
         //transform.position = Vector3.MoveTowards(transform.position, new Vector3(4,0,0), step);

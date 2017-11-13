@@ -30,7 +30,7 @@ namespace Assets.Code.Menus
             {
                 newb.onClick.AddListener(test);
             }
-            }
+           }
         void test()
         {
             Debug.Log("rua");

@@ -19,14 +19,19 @@ public class Enemy : MonoBehaviour
     public void Initialize ()
     {
         Target = FindObjectOfType<Base>().transform;
-        this.transform.position = new Vector3(0, 1, 4);
         Health = 10000f;
         Damage = 5f;
         Speed = 0.5f;
         valve = 10;
-        this.agent = GetComponent<NavMeshAgent>();
+        this.agent = this.GetComponent<NavMeshAgent>();
+        this.transform.position = new Vector3(0, 0.7f, 4);
         agent.destination = Target.position;
+
 // Debug.Log(this.transform.position);
+
+        
+        Debug.Log(this.transform.position);
+
     }
 
    internal void OnCollisionEnter (Collision other) {

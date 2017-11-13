@@ -6,6 +6,15 @@ public class Tower : MonoBehaviour {
     void Start () {
         //this.transform.position = new Vector3(2 , 0.7f, 2);
     }
+    public bool Initialize(Vector3 pos)
+    {
+        if (!FindObjectOfType<PathFinder>().PathExists())
+        {
+            Destroy(gameObject);
+            return false;
+        }
+        else return true;
+    }
     void TurnToEnemy()
     {
         var layermask = 1 << 8;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Object = UnityEngine.Object;
 
 namespace Assets.Code
@@ -44,7 +45,6 @@ namespace Assets.Code
             s.Initialize();
         }
         // Use this for initialization
-
         // Update is called once per frame
     }
 }

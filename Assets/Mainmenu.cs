@@ -25,12 +25,12 @@ namespace Assets.Code.Menus
         private void InitializeButtons(GameObject menu)
         {
             var newb = menu.GetComponentInChildren<Button>();
-
             if (newb.name == "Tower1")
             {
+                
                 newb.onClick.AddListener(test);
             }
-            }
+        }
         void test()
         {
             Debug.Log("rua");

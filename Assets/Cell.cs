@@ -29,11 +29,16 @@ namespace Assets.Code.Menus
             var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
             if (FindObjectOfType<TowerBlockCollection>().Spawn(towerpos))
             {
-                Mainmenu me;
-                me = new Mainmenu(tmp.transform, built_flag, path_flag);
+                //Mainmenu me;
+                //me = new Mainmenu(tmp.transform, built_flag, path_flag);
             }
-            
-            
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.GetComponent<Enemy>())
+            {
+
+            }
         }
     }
 }

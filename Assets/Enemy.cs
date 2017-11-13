@@ -26,7 +26,6 @@ public class Enemy : MonoBehaviour
         this.agent = this.GetComponent<NavMeshAgent>();
         this.transform.position = new Vector3(0, 0.7f, 4);
         agent.destination = Target.position;
-        
     }
 
    internal void OnCollisionEnter (Collision other) {

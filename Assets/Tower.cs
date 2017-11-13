@@ -1,20 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 public class Tower : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //this.transform.position = new Vector3(2 , 0.7f, 2);
     }
-    public bool Initialize(Vector3 pos)
+    /*public bool Initialize(Vector3 pos)
     {
-        if (!FindObjectOfType<PathFinder>().PathExists())
+        GetComponentInParent<NavMeshObstacle>().enabled = true;
+        var ispath = FindObjectOfType<PathFinder>().PathExists();
+        GetComponentInParent<NavMeshObstacle>().enabled = false;
+        if (!ispath)
         {
-            Destroy(gameObject);
+            Debug.Log("Road Blocker");
             return false;
         }
-        else return true;
-    }
+        else
+        {
+            GetComponentInParent<NavMeshObstacle>().enabled = true;
+            return true;
+        }
+    }*/
     void TurnToEnemy()
     {
         var layermask = 1 << 8;

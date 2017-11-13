@@ -7,6 +7,8 @@ public class TowerBlockCollection : MonoBehaviour
 {
     private static Object _TowerBlockPrefab;
     private Transform _holder;
+    private Object prevTower;
+    private bool havechecked;
     // Use this for initialization
     internal void Start()
     {
@@ -20,6 +22,11 @@ public class TowerBlockCollection : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0, 0, 0);
         var tower = (GameObject)Object.Instantiate(_TowerBlockPrefab, pos, rotation, _holder);
         var s = tower.GetComponentInChildren<Tower>();
-        return s.Initialize(pos);
+        var flag = FindObjectOfType<PathFinder>().PathExists();
+        if (!flag)
+        {
+            DestroyImmediate(tower);
+        }
+        return flag;
     }
 }

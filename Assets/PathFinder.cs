@@ -17,9 +17,9 @@ public class PathFinder : MonoBehaviour {
     public bool PathExists()
     {
         path = new NavMeshPath();
-        var targetPos = FindObjectOfType<Base>().transform.position;
+        var targetPos = target.position;
         agent.CalculatePath(targetPos, path);
-        if (path.status != NavMeshPathStatus.PathComplete)
+        if (path.status == NavMeshPathStatus.PathPartial)
         {
             return false;
         }
@@ -30,6 +30,6 @@ public class PathFinder : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        this.transform.position = new Vector3(0f, 0.7f, 4f);
+        this.transform.position = new Vector3(-0.5f, 0.7f, 4.5f);
     }
 }

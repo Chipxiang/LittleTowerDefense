@@ -7,14 +7,16 @@ public class Tower : MonoBehaviour {
     void Start () {
         //this.transform.position = new Vector3(2 , 0.7f, 2);
     }
-    /*public bool Initialize(Vector3 pos)
+    public bool Initialize()
     {
         GetComponentInParent<NavMeshObstacle>().enabled = true;
+        GetComponentInParent<NavMeshObstacle>().carving = true;
         var ispath = FindObjectOfType<PathFinder>().PathExists();
         GetComponentInParent<NavMeshObstacle>().enabled = false;
         if (!ispath)
         {
             Debug.Log("Road Blocker");
+            DestroyImmediate(gameObject);
             return false;
         }
         else
@@ -22,7 +24,7 @@ public class Tower : MonoBehaviour {
             GetComponentInParent<NavMeshObstacle>().enabled = true;
             return true;
         }
-    }*/
+    }
     void TurnToEnemy()
     {
         var layermask = 1 << 8;

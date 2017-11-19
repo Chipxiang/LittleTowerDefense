@@ -7,30 +7,54 @@ namespace Assets.Code.Menus
 {
     public class Cell : MonoBehaviour
     {
-        public static bool built_flag;
         public static bool path_flag;
-        Transform tmp;
+        public static bool isbulint;//for build or for destory
+        public static bool isclick;
+        Transform cellpos;
         // Use this for initialization
         void Start()
         {
-            built_flag = true;
+            isbulint = false;
             path_flag = true;
-            tmp = gameObject.GetComponent<Transform>();
+            isclick = false;
+            cellpos = gameObject.GetComponent<Transform>();
         }
 
         // Update is called once per frame
         void Update()
         {
-
         }
         private void OnMouseDown()
         {
-            Debug.Log("click");
-            var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
-            if (FindObjectOfType<TowerBlockCollection>().Spawn(towerpos))
+            Debug.Log(gameObject.name);
+            Debug.Log(isclick);
+            if (isclick == false)
             {
-                //Mainmenu me;
-                //me = new Mainmenu(tmp.transform, built_flag, path_flag);
+                isclick = true;
+                if (isbulint == false)
+                {
+                    //var ff = Object.FindObjectOfType<Mainmenu>();
+                    //Debug.Log(ff.name);
+                    //Debug.Log(menu.name);
+                    var ff = GameObject.FindObjectOfType<Mainmenu>();
+                    Debug.Log(ff.name);
+                    ff.dispalymenu(cellpos);
+                    //var tmp = menu.GetComponent<Mainmenu>();
+                    //tmp.dispalymenu();
+                    /*var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
+                    if (FindObjectOfType<TowerBlockCollection>().Spawn(towerpos))
+                    {
+                        Mainmenu me;
+                        me = new Mainmenu();
+                    }*/
+                }
+            }
+                else if (isclick == true)
+            {
+                isclick = false;
+                var ff = GameObject.FindObjectOfType<Mainmenu>();
+                ff.hidemenu();
+
             }
         }
         private void OnCollisionEnter(Collision collision)
@@ -40,5 +64,6 @@ namespace Assets.Code.Menus
 
             }
         }
+
     }
 }

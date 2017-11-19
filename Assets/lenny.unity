@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641234, b: 0.57481724, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -943,15 +943,15 @@ RectTransform:
   m_GameObject: {fileID: 541148496}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -59.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.7935836, y: 3.7935846, z: 3.7935846}
   m_Children: []
   m_Father: {fileID: 91768788}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127.9, y: -163.7}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 0.4872464}
+  m_AnchorMax: {x: 0, y: 0.4872464}
+  m_AnchoredPosition: {x: 305, y: -237}
+  m_SizeDelta: {x: 160, y: 50.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &541148498
 MonoBehaviour:
@@ -978,8 +978,8 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
-    m_Alignment: 1
+    m_MaxSize: 50
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1173,6 +1173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80f19d4bcba59e949b37ad1944f2ffcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roadBlocker: 0
 --- !u!4 &712159234
 Transform:
   m_ObjectHideFlags: 0

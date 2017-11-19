@@ -8,7 +8,7 @@ namespace Assets.Code
 {
     public class Spawning : MonoBehaviour
     {
-        private const float WaveCd = 20f;
+        public const float WaveCd = 5f;
         private const float SpawnTime = 0.8f;
         private const int MaxMonsterCount = 10;
         private static Object _EnemyPrefab;

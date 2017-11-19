@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 public class Tower : MonoBehaviour {
+    public static int val;
     // Use this for initialization
     void Start () {
+        val = 10;
         //this.transform.position = new Vector3(2 , 0.7f, 2);
     }
     public bool Initialize()
@@ -51,4 +53,11 @@ public class Tower : MonoBehaviour {
     void Update() {
         TurnToEnemy();
     }
+    public static void destory()
+    {
+        
+        MoneyManager.AddMoney((int)(val*0.9f));
+    }
+
+
 }

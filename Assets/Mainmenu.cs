@@ -3,39 +3,63 @@ using UnityEngine.UI;
 
 namespace Assets.Code.Menus
 {
-        public class Mainmenu 
-        {
+        public class Mainmenu : MonoBehaviour
+    {
+            public static bool currentmenu;
             private readonly Object _menu;
             GameObject menu;
-            public Mainmenu(Transform pos,bool a,bool b)
+            Vector3 outpostion;
+            bool isshow;
+            Camera maincam;
+            void Start()
+        {
+            outpostion = new Vector3(-35f,300f,0f);
+            gameObject.SetActive(true);
+            isshow = false;
+            maincam = FindObjectOfType<Camera>();
+            Debug.Log(outpostion);
+        }
+        public void dispalymenu(Transform pos)
+        {
+            if (isshow == false)
             {
-                _menu = Resources.Load("Menu/Mainmenu");
-                Camera maincam = GameObject.FindObjectOfType<Camera>();
-                var scr = GameObject.FindObjectOfType<Canvas>();
-                Transform tran = scr.GetComponent<Transform>();
-                Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
-                menu = (GameObject)GameObject.Instantiate(_menu, screenPos,pos.rotation, tran);
-                InitializeButtons( menu);
-                // TODO fill me in
+                isshow = true;
             }
-
+            Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
+            screenPos.x = screenPos.x + 200f;
+            screenPos.y = screenPos.y + 250f;
+            Debug.Log(pos.position);
+            Debug.Log(screenPos);
+            gameObject.transform.position = screenPos;
+            //gameObject.transform.position = pos.position;
+            InitializeButtons();
+        }
         /// <summary>
         /// Add listeners to the MainMenu buttons
         /// </summary>
-        private void InitializeButtons(GameObject menu)
+        private void InitializeButtons()
         {
-            var newb = menu.GetComponentInChildren<Button>();
-            if (newb.name == "Tower1")
+            var newb = gameObject.GetComponentInChildren<Button>();
+            Debug.Log(newb.name);
+            if ( newb.name== "Button")
             {
-                
                 newb.onClick.AddListener(test);
             }
         }
         void test()
         {
             Debug.Log("rua");
-            Object.Destroy(menu);
-
+            gameObject.transform.position = outpostion;
         }
+        void Update()
+        {
+        }
+        public void hidemenu()
+        {
+            Debug.Log("hide");
+            gameObject.transform.position = outpostion;
+            Debug.Log(outpostion);
         }
     }
+
+}

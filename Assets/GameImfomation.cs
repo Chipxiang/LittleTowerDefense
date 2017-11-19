@@ -12,7 +12,6 @@ public class GameImfomation : MonoBehaviour {
         imfo= gameObject.GetComponent<Text>();
         Updateinfo();
         spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
-        Debug.Log(spaw.childCount);
     }
 	
 	// Update is called once per frame

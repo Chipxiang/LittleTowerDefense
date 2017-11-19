@@ -9,24 +9,25 @@ public class Tower : MonoBehaviour {
         val = 10;
         //this.transform.position = new Vector3(2 , 0.7f, 2);
     }
-    public bool Initialize()
+    /*public bool Initialize()
     {
         GetComponentInParent<NavMeshObstacle>().enabled = true;
         GetComponentInParent<NavMeshObstacle>().carving = true;
+        yield return true;
         var ispath = FindObjectOfType<PathFinder>().PathExists();
         GetComponentInParent<NavMeshObstacle>().enabled = false;
         if (!ispath)
         {
             Debug.Log("Road Blocker");
             DestroyImmediate(gameObject);
-            return false;
+            yield return false;
         }
         else
         {
             GetComponentInParent<NavMeshObstacle>().enabled = true;
-            return true;
+            yield return true;
         }
-    }
+    }*/
     void TurnToEnemy()
     {
         var layermask = 1 << 8;
@@ -52,10 +53,10 @@ public class Tower : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         TurnToEnemy();
+
     }
-    public static void destory()
+    public static void DestoryTower()
     {
-        
         MoneyManager.AddMoney((int)(val*0.9f));
     }
 

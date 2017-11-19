@@ -36,17 +36,18 @@ namespace Assets.Code.Menus
                     //var ff = Object.FindObjectOfType<Mainmenu>();
                     //Debug.Log(ff.name);
                     //Debug.Log(menu.name);
-                    var ff = GameObject.FindObjectOfType<Mainmenu>();
-                    Debug.Log(ff.name);
-                    ff.dispalymenu(cellpos);
+                    //var ff = GameObject.FindObjectOfType<Mainmenu>();
+                    //Debug.Log(ff.name);
+                    //ff.dispalymenu(cellpos);
                     //var tmp = menu.GetComponent<Mainmenu>();
                     //tmp.dispalymenu();
-                    /*var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
-                    if (FindObjectOfType<TowerBlockCollection>().Spawn(towerpos))
+                    var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
+                    StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(towerpos));
+                    if (!FindObjectOfType<TowerBlockCollection>().roadBlocker)
                     {
                         Mainmenu me;
                         me = new Mainmenu();
-                    }*/
+                    }
                 }
             }
                 else if (isclick == true)

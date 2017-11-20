@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class TowerBlockCollection : MonoBehaviour
+
+    public class TowerBlockCollection : MonoBehaviour
 {
     private static Object _TowerBlockPrefab;
     private Transform _holder;
     public bool roadBlocker;
+    public bool spawnFinished;
     // Use this for initialization
     internal void Start()
     {
@@ -17,8 +19,9 @@ public class TowerBlockCollection : MonoBehaviour
         roadBlocker = false;
 
     }
-    public IEnumerator Spawn(Vector3 pos)
+    public IEnumerator Spawn(GameObject cell)
     {
+        var pos = new Vector3(cell.transform.position.x, cell.transform.position.y + 0.7f, cell.transform.position.z);
         Quaternion rotation = Quaternion.Euler(0, 0, 0);
         var tower = (GameObject)Object.Instantiate(_TowerBlockPrefab, pos, rotation, _holder);
         for (int i = 0; i<tower.GetComponentsInChildren<MeshRenderer>().Length;i++){
@@ -29,6 +32,7 @@ public class TowerBlockCollection : MonoBehaviour
         if (!flag)
         {
             DestroyImmediate(tower);
+            cell.GetComponent<Cell>().isBuilt = false;
             roadBlocker = true;
         }
         else
@@ -38,6 +42,7 @@ public class TowerBlockCollection : MonoBehaviour
             {
                 tower.GetComponentsInChildren<MeshRenderer>()[i].enabled = true;
             }
+            cell.GetComponent<Cell>().isBuilt = true;
         }
         yield break;
     }

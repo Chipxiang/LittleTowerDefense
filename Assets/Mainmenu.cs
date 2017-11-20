@@ -1,38 +1,51 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.Menus
-{
-        public class Mainmenu : MonoBehaviour
+public class Mainmenu : MonoBehaviour
     {
+        private UnityEngine.Events.UnityAction m_MyFirstAction;
             public static bool currentmenu;
             private readonly Object _menu;
             GameObject menu;
             Vector3 outpostion;
             bool isshow;
             Camera maincam;
+        GameObject cellobj;
+        Transform cellpos;
             void Start()
         {
+
             outpostion = new Vector3(-35f,300f,0f);
+            gameObject.transform.position = outpostion;
             gameObject.SetActive(true);
             isshow = false;
             maincam = FindObjectOfType<Camera>();
-            Debug.Log(outpostion);
-        }
-        public void dispalymenu(Transform pos)
-        {
-            if (isshow == false)
-            {
-                isshow = true;
-            }
-            Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
-            screenPos.x = screenPos.x + 200f;
-            screenPos.y = screenPos.y + 250f;
-            Debug.Log(pos.position);
-            Debug.Log(screenPos);
-            gameObject.transform.position = screenPos;
-            //gameObject.transform.position = pos.position;
+            //Debug.Log(outpostion);
             InitializeButtons();
+        }
+        public void dispalymenu(GameObject cell)
+        {
+            cellobj = cell;
+            var pos = cell.GetComponent<Transform>();
+            cellpos = pos;
+            Debug.Log(gameObject.transform.position+ outpostion);
+            if (gameObject.transform.position == outpostion)
+            {
+                Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
+                screenPos.x = screenPos.x + 200f;
+                screenPos.y = screenPos.y + 250f;
+                //Debug.Log(pos.position);
+                //Debug.Log(screenPos);
+                gameObject.transform.position = screenPos;
+                //gameObject.transform.position = pos.position;
+            }
+            else if (gameObject.transform.position != outpostion)
+            {
+                //isshow = false;
+                gameObject.transform.position = outpostion;
+            }
+
         }
         /// <summary>
         /// Add listeners to the MainMenu buttons
@@ -40,20 +53,19 @@ namespace Assets.Code.Menus
         private void InitializeButtons()
         {
             var newb = gameObject.GetComponentInChildren<Button>();
-            Debug.Log(newb.name);
-            if ( newb.name== "Button")
+            //Debug.Log("name is "+newb.name);
+            if ( newb.name == "Button")
             {
-                newb.onClick.AddListener(test);
+                newb.onClick.AddListener(() => Test());
             }
         }
-        void test()
+        void Test()
         {
             Debug.Log("rua");
             gameObject.transform.position = outpostion;
+            StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
         }
-        void Update()
-        {
-        }
+
         public void hidemenu()
         {
             Debug.Log("hide");
@@ -61,5 +73,3 @@ namespace Assets.Code.Menus
             Debug.Log(outpostion);
         }
     }
-
-}

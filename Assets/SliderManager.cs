@@ -21,4 +21,6 @@ public class SliderManager : MonoBehaviour {
     public static void UpdateSlider () {
         slider.value = health;
 	}
+
+
 }

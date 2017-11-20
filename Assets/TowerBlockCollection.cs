@@ -43,6 +43,7 @@ using Object = UnityEngine.Object;
             {
                 tower.GetComponentsInChildren<MeshRenderer>()[i].enabled = true;
             }
+            MoneyManager.ConsumMoney(20);
             cell.GetComponent<Cell>().isBuilt = true;
         }
         yield break;

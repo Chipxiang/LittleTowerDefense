@@ -72,7 +72,7 @@ namespace Assets.Code
                 GameImfomation.eclipse(wave);
                 _lastspawn = Time.time;
                 Spawn();
-                GameImfomation.infomoving(wave+1,monsternumber/ MaxMonsterCount[wave]);
+                FindObjectOfType<GameImfomation>().infomoving(wave+1,monsternumber/ MaxMonsterCount[wave]);
                 monsternumber++;
             }
             else if (monsternumber >= MaxMonsterCount[wave-1])
@@ -89,8 +89,7 @@ namespace Assets.Code
                 _lastspawn = Time.time;
                 Spawn();
                 monsternumber++;
-                if (wave < MAX_WAVE)
-                { GameImfomation.infomoving(wave + 1, monsternumber / MaxMonsterCount[wave]); }
+                 FindObjectOfType<GameImfomation>().infomoving(wave + 1, monsternumber / MaxMonsterCount[wave]); 
                 if (monsternumber == MaxMonsterCount[wave - 1])
                 {
                     if (gameObject.transform.childCount == 0)

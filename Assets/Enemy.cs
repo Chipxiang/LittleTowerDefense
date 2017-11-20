@@ -15,16 +15,16 @@ public class Enemy : MonoBehaviour
     void Start()
     {
     }
-    public void Initialize ()
+    public void Initialize (float health, float damage,float speed,int val)
     {
         Target = FindObjectOfType<Base>().transform;
-        Health = 10000f;
-        Damage = 1f;
-        Speed = 0.5f;
-        value = 10;
         this.agent = this.GetComponent<NavMeshAgent>();
         this.transform.position = new Vector3(0, 0.7f, 4);
         agent.destination = Target.position;
+        Health = health;
+        Damage = damage;
+        value = val;
+        Speed = speed;
     }
 
    internal void OnCollisionEnter (Collision other) {

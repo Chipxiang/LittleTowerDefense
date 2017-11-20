@@ -12,9 +12,13 @@ public class GameImfomation : MonoBehaviour {
     static float info_speed;
     static int info_valuse;
     static Text[] test;
+    static Vector3 endlocation;
     // Use this for initialization
     void Start()
     {
+        endlocation.x = -35f;
+        endlocation.y = 20f;
+        endlocation.z = 0f;
         Debug.Log(gameObject.name);
         imfo= gameObject.GetComponent<Text>();
         //Updateinfo(1,10);
@@ -34,10 +38,34 @@ public class GameImfomation : MonoBehaviour {
         //imfo.text = "";
 
     }*/
-    public static void infomoving(float time)
+    public static void infomoving(int nextwave,float timeratio)
     {
+        Debug.Log("moving" + nextwave);
+        foreach (Text wavename in test)
+        {
+            Debug.Log(wavename.name);
+            if (wavename.name == "Text" + nextwave.ToString())
+            {
+                var location = wavename.GetComponent<Transform>();
+                location.position = (endlocation - location.position) * timeratio + location.position;
 
 
+            }
+        }
+
+    }
+    public static void eclipse(int wave)
+    {
+        foreach (Text wavename in test)
+        {
+            if (wavename.name == "Text" + wave.ToString())
+            {
+                //Debug.Log(wavename.transform.position);
+                //Debug.Log("Text" + wave.ToString() + "Fuck you");
+                wavename.text = "";
+
+            }
+        }
     }
     public static void GetWaveInfo(int wave,int maxnum,float damage,float speed)
     {

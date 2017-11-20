@@ -8,12 +8,15 @@ namespace Assets.Code
 {
     public class Spawning : MonoBehaviour
     {
-        
+        private float Health;
+        private float Damage;
+        private float Speed;
+        private int value;
         //private const float WaveCd = 20f;
-        public const float WaveCd = 5f;
-        private const float SpawnTime = 0.8f;
-        private const int MaxMonsterCount = 10;
-        private const int MAX_WAVE = 3;
+        public const float WaveCd = 10f;
+        private const float SpawnTime = 0.7f;
+        private int[] MaxMonsterCount;
+        private const int MAX_WAVE = 5;
         private static Object _EnemyPrefab;
         private float _lastspawn;
         private Transform _holder;
@@ -24,11 +27,20 @@ namespace Assets.Code
         private float tanker;//special monster
         internal void Start()
         {
+            MaxMonsterCount = new int[5]{ 10,14,12,13,15};
+            Health = 10f;
+            Damage = 2f;
+            Speed = 0.3f;
+            value = 10;
+            for (int i = 0; i < MAX_WAVE; i++)
+            {
+                GameImfomation.GetWaveInfo(i + 1, MaxMonsterCount[i], Damage,Speed);
+            }
             this.transform.position = new Vector3(0f, 0.7f, 4f);
             _EnemyPrefab = Resources.Load("Enemy");
             _holder = this.transform;
-            _lastspawn = 0f;
-            spawn_time = 0f;
+            _lastspawn = 5f;
+            spawn_time = 5f;
             wave = 1;
             monsternumber = 0;
             //Asteroid.Manager = this;
@@ -42,35 +54,33 @@ namespace Assets.Code
             GameImfomation.infomoving(wave);*/
         internal void FixedUpdate()
         {
-            if (wave == 1 && monsternumber <= MaxMonsterCount)
+            if (wave == 1 && monsternumber < MaxMonsterCount[wave-1])
             {
                 //GameImfomation.hideinfo();
                 if ((Time.time - _lastspawn) < SpawnTime) return;
                 _lastspawn = Time.time;
                 Spawn();
+                GameImfomation.infomoving(wave+1,monsternumber/ MaxMonsterCount[wave - 1]);
                 monsternumber++;
-                //GameImfomation.Updateinfo(wave, MaxMonsterCount);
             }
-            else if (monsternumber >= MaxMonsterCount)
+            else if (monsternumber >= MaxMonsterCount[wave - 1])
             {
                 if (gameObject.transform.childCount == 0)
                 { nextwave(); }
-
-                //GameImfomation.Updateinfo(wave, MaxMonsterCount);
             }
 
-            else if ( (wave>1 && wave<=MAX_WAVE) && (Time.time - spawn_time) >= WaveCd && monsternumber <= MaxMonsterCount)
+            else if ( (wave>1 && wave<=MAX_WAVE) && (Time.time - spawn_time) >= WaveCd && monsternumber < MaxMonsterCount[wave - 1])
             {
                 //GameImfomation.hideinfo();
                 if ((Time.time - _lastspawn) < SpawnTime) return;
                 _lastspawn = Time.time;
                 Spawn();
                 monsternumber++;
+                GameImfomation.infomoving(wave + 1, monsternumber / MaxMonsterCount[wave - 1]);
                 if (monsternumber == 10)
                 {
                     nextwave();
                  }
-                //GameImfomation.Updateinfo(wave, MaxMonsterCount);
             }
             if (wave > MAX_WAVE)
             {
@@ -85,6 +95,7 @@ namespace Assets.Code
         }
         void nextwave()
         {
+            GameImfomation.eclipse(wave);
             wave++;
             spawn_time = Time.time;
             monsternumber = 0;
@@ -105,7 +116,7 @@ namespace Assets.Code
             Quaternion rotation = Quaternion.Euler(0,0,0);
             var ast = (GameObject)Object.Instantiate(_EnemyPrefab, pos, rotation, _holder);
             var s = ast.GetComponentInChildren<Enemy>();
-            s.Initialize();
+            s.Initialize(Health,Damage,Speed,value);
         }
 
         // Use this for initialization

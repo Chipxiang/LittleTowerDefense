@@ -163,6 +163,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4723606907853424, guid: b27b012ccbc2dce488669c0c90cddbe5,
     type: 2}
   m_PrefabInternal: {fileID: 13111167}
+--- !u!224 &14859082 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224934625127719334, guid: 453d60a9e0d5b324a9cdc72eb088e44c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1053561550}
 --- !u!1001 &84167725
 Prefab:
   m_ObjectHideFlags: 0
@@ -305,8 +310,8 @@ RectTransform:
   m_Children:
   - {fileID: 1813123136}
   - {fileID: 687981410}
-  - {fileID: 983896853}
-  - {fileID: 1143613133}
+  - {fileID: 14859082}
+  - {fileID: 712724198}
   - {fileID: 1843169718}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1100,6 +1105,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &712724198 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224999427834574258, guid: e9da7aa583e08674eb5593335d2d6307,
+    type: 2}
+  m_PrefabInternal: {fileID: 788856608}
 --- !u!1001 &713660362
 Prefab:
   m_ObjectHideFlags: 0
@@ -1527,7 +1537,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 4
-  m_Text: Button
+  m_Text: '
+
+'
 --- !u!222 &880809788
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1585,28 +1597,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4723606907853424, guid: b27b012ccbc2dce488669c0c90cddbe5,
     type: 2}
   m_PrefabInternal: {fileID: 893500608}
---- !u!1 &983896852 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1140477077285306, guid: 453d60a9e0d5b324a9cdc72eb088e44c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1053561550}
---- !u!224 &983896853 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224500443499291978, guid: 453d60a9e0d5b324a9cdc72eb088e44c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1053561550}
---- !u!114 &983896854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 983896852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa5a57710c677e4689f9d68cb91febc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outpostion: {x: 0, y: 0, z: 0}
 --- !u!1001 &1000833101
 Prefab:
   m_ObjectHideFlags: 0
@@ -1798,28 +1788,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 453d60a9e0d5b324a9cdc72eb088e44c, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1143613132 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1326010323380794, guid: e9da7aa583e08674eb5593335d2d6307,
-    type: 2}
-  m_PrefabInternal: {fileID: 788856608}
---- !u!224 &1143613133 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224985978454754516, guid: e9da7aa583e08674eb5593335d2d6307,
-    type: 2}
-  m_PrefabInternal: {fileID: 788856608}
---- !u!114 &1143613135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1143613132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11ae7b3840a3c642a8192e34343aebf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outpostion: {x: 0, y: 0, z: 0}
 --- !u!1001 &1195406007
 Prefab:
   m_ObjectHideFlags: 0
@@ -2118,7 +2086,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 4
-  m_Text: Button
+  m_Text: '
+
+'
 --- !u!222 &1379576035
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2267,7 +2237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -314, y: -0.000038147}
+  m_AnchoredPosition: {x: -173.5, y: -0.000038147}
   m_SizeDelta: {x: -396, y: -320}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1641117086
@@ -2302,7 +2272,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 4
-  m_Text: Button
+  m_Text: Wave1
 --- !u!222 &1641117087
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2376,7 +2346,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 4
-  m_Text: Button
+  m_Text: '
+
+'
 --- !u!222 &1678818836
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2512,7 +2484,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 4
-  m_Text: Button
+  m_Text: '
+
+'
 --- !u!222 &1762331368
 CanvasRenderer:
   m_ObjectHideFlags: 0

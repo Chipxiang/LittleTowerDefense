@@ -19,8 +19,7 @@ public class GameImfomation : MonoBehaviour {
         endlocation.x = -35f;
         endlocation.y = 20f;
         endlocation.z = 0f;
-        Debug.Log(gameObject.name);
-        imfo= gameObject.GetComponent<Text>();
+        imfo = gameObject.GetComponent<Text>();
         //Updateinfo(1,10);
         spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
         test = gameObject.GetComponentsInChildren<Text>();
@@ -40,10 +39,9 @@ public class GameImfomation : MonoBehaviour {
     }*/
     public static void infomoving(int nextwave,float timeratio)
     {
-        Debug.Log("moving" + nextwave);
+       // Debug.Log("moving" + nextwave);
         foreach (Text wavename in test)
-        {
-            Debug.Log(wavename.name);
+        {;
             if (wavename.name == "Text" + nextwave.ToString())
             {
                 var location = wavename.GetComponent<Transform>();
@@ -73,13 +71,10 @@ public class GameImfomation : MonoBehaviour {
         info_maxnum = maxnum;
         info_speed = speed;
         info_damage = damage;
-        Debug.Log("Text" + wave.ToString() + "Find you");
         foreach (Text wavename in test)
         {
-            Debug.Log(wavename.name);
             if (wavename.name == "Text" + wave.ToString())
             {
-                Debug.Log("Text" + wave.ToString() + "Fuck you");
                 wavename.text = "Wave" + wave + "\r\n" + info_maxnum + "\r\n" + info_speed + "\r\n" + info_damage;
 
             }

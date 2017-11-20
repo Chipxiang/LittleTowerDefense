@@ -15,6 +15,7 @@ public class WaveIcon : MonoBehaviour
 		target = new Vector3(transform.position.x + 10000f, transform.position.y, transform.position.z);
 		_originalWaveNum = Assets.Code.Spawning.wave;
 		originalPos = new Vector3(34f, 37f, 8.8f);
+		transform.position = originalPos;
 	}
 	
 	// Update is called once per frame

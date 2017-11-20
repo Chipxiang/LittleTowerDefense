@@ -12,17 +12,25 @@ namespace Assets.Code.Menus
             Vector3 outpostion;
             bool isshow;
             Camera maincam;
+        GameObject cellobj;
+        Transform cellpos;
             void Start()
         {
+
             outpostion = new Vector3(-35f,300f,0f);
+            gameObject.transform.position = outpostion;
             gameObject.SetActive(true);
             isshow = false;
             maincam = FindObjectOfType<Camera>();
             //Debug.Log(outpostion);
             InitializeButtons();
         }
-        public void dispalymenu(Transform pos)
+        public void dispalymenu(GameObject cell)
         {
+            cellobj = cell;
+            var pos = cell.GetComponent<Transform>();
+            cellpos = pos;
+            Debug.Log(gameObject.transform.position+ outpostion);
             if (gameObject.transform.position == outpostion)
             {
                 Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
@@ -56,7 +64,12 @@ namespace Assets.Code.Menus
         {
             Debug.Log("rua");
             gameObject.transform.position = outpostion;
+           var towerpos = new Vector3(cellpos.position.x, cellpos.position.y + 0.7f, cellpos.position.z);
+           StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(towerpos));
+            cellobj.GetComponent<Cell>().isbulint = true;
+
         }
+
         public void hidemenu()
         {
             Debug.Log("hide");

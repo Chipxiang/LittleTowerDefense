@@ -6,30 +6,32 @@ namespace Assets.Code.Menus
 {
     public class Remenu : MonoBehaviour
     {
-
         private UnityEngine.Events.UnityAction m_MyFirstAction;
         public static bool currentmenu;
         private readonly Object _menu;
         GameObject menu;
-        Vector3 outpostion;
+        private Vector3 outpostion;
         bool isshow;
         Camera maincam;
         void Start()
         {
-            outpostion = new Vector3(-35f, 300f, 0f);
+            outpostion = new Vector3(-100f, -300f, 0f);
+            gameObject.transform.position = outpostion;
             gameObject.SetActive(true);
             isshow = false;
             maincam = FindObjectOfType<Camera>();
             //Debug.Log(outpostion);
             InitializeButtons();
         }
-        public void dispalyremenu(Transform pos)
+        public void dispalyremenu(GameObject cellobj)
         {
+            var pos = cellobj.transform;
             if (gameObject.transform.position == outpostion)
             {
                 Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
-                screenPos.x = screenPos.x + 200f;
-                screenPos.y = screenPos.y + 250f;
+                Debug.Log("screenPos"+screenPos);
+                screenPos.x = screenPos.x + 600f;
+                screenPos.y = screenPos.y + 500f;
                 //Debug.Log(pos.position);
                 //Debug.Log(screenPos);
                 gameObject.transform.position = screenPos;
@@ -58,17 +60,6 @@ namespace Assets.Code.Menus
             gameObject.transform.position = outpostion;
         }
         // Update is called once per frame
-        void Update()
-        {
-            if (currentmenu == true)
-            {
-                gameObject.SetActive(currentmenu);
-            }
-            if (currentmenu == false)
-            {
-                gameObject.SetActive(currentmenu);
-            }
-        }
     }
 
 }

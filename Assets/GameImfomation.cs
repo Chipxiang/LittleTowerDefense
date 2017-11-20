@@ -5,11 +5,13 @@ using UnityEngine.UI;
 public class GameImfomation : MonoBehaviour {
      static Text imfo;
     Object ene;
+    private static bool show;
     static Transform spaw;
     // Use this for initialization
     void Start()
     {
-        imfo= gameObject.GetComponent<Text>();
+        show = true;
+           imfo = gameObject.GetComponent<Text>();
         Updateinfo(1,10);
         spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
     }
@@ -23,6 +25,7 @@ public class GameImfomation : MonoBehaviour {
     {
         spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
         imfo.text = "";
+        show = false;
 
     }
 	public static void Updateinfo ()

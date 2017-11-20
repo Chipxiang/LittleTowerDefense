@@ -8,7 +8,8 @@ namespace Assets.Code.Menus
     public class Cell : MonoBehaviour
     {
         private  bool path_flag;
-        private bool isbulint;//for build or for destory
+        public bool isbulint;//for build or for destory
+        public GameObject Toweron;
         Transform cellpos;
         // Use this for initialization
         void Start()
@@ -35,38 +36,38 @@ namespace Assets.Code.Menus
                     //Debug.Log(menu.name);
                          Debug.Log(gameObject.name+ "builtmenu");
                         var ff = GameObject.FindObjectOfType<Mainmenu>();
-                        ff.dispalymenu(cellpos);
-                        //var tmp = menu.GetComponent<Mainmenu>();
-                        //tmp.dispalymenu();
-                        /*var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
-                        if (FindObjectOfType<TowerBlockCollection>().Spawn(towerpos))
-                        {
-                            Mainmenu me;
-                            me = new Mainmenu();
-                        }*/
-                    }
-                    else if (isbulint == true)
+                        ff.dispalymenu(gameObject);
+
+                    //var tmp = menu.GetComponent<Mainmenu>();
+                    //tmp.dispalymenu();
+                    /*var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
+                    if (FindObjectOfType<TowerBlockCollection>().Spawn(towerpos))
+                    {
+                        Mainmenu me;
+                        me = new Mainmenu();
+                    }*/
+                }
+                    if (isbulint == true)
                 {
-                    var ff = GameObject.FindObjectOfType<Mainmenu>();
-                    ff.hidemenu();
+                    /*var ff = GameObject.FindObjectOfType<Mainmenu>();
+                    ff.hidemenu();*/
                     Debug.Log(gameObject.name + "removemenu");
                     var re = GameObject.FindObjectOfType<Remenu>();
-                    re.dispalyremenu(cellpos);
-
+                    re.dispalyremenu(gameObject);
                     Debug.Log(gameObject.name);
-                    Debug.Log("removemenu");
+                    Debug.Log(re.name);
                     //var ff = GameObject.FindObjectOfType<Mainmenu>();
                     //Debug.Log(ff.name);
                     //ff.dispalymenu(cellpos);
                     //var tmp = menu.GetComponent<Mainmenu>();
                     //tmp.dispalymenu();
-                    var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
-                    StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(towerpos));
-                    if (!FindObjectOfType<TowerBlockCollection>().roadBlocker)
+                   
+
+                   /* if (!FindObjectOfType<TowerBlockCollection>().roadBlocker)
                     {
                         Mainmenu me;
                         me = new Mainmenu();
-                    }
+                    }*/
                 }
                }
             else

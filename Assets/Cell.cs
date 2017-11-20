@@ -24,27 +24,28 @@ using UnityEngine;
         }
         private void OnMouseUpAsButton()
         {
-        if(Time.timeScale == 0)
-        {
+                if(Time.timeScale == 0)
+                {
             return;
-        }
+                  }
             Debug.Log(gameObject.name);
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
-            var ttmp = FindObjectOfType<Remenu>();
-            var outpos = ttmp.outpostion;
-            var currpos = ttmp.transform.position;
-           if (currpos != outpos)
-            {
-                Debug.Log(currpos);
-                ttmp.hidemenu();
-            }
-                    if (isBuilt == false)
-                    {
-                    //var ff = Object.FindObjectOfType<Mainmenu>();
-                    //Debug.Log(ff.name);
-                    //Debug.Log(menu.name);
-                         Debug.Log(gameObject.name+ "builtmenu");
+                 if (isBuilt == false)
+             {
+                var ttmp = FindObjectOfType<Remenu>();
+                var outpos = ttmp.outpostion;
+                var currpos = ttmp.transform.position;
+                if (currpos != outpos)
+                {
+                    Debug.Log(currpos);
+                    ttmp.hidemenu();
+                }
+
+                //var ff = Object.FindObjectOfType<Mainmenu>();
+                //Debug.Log(ff.name);
+                //Debug.Log(menu.name);
+                Debug.Log(gameObject.name+ "builtmenu");
                         var ff = GameObject.FindObjectOfType<Mainmenu>();
                         ff.dispalymenu(gameObject);
 
@@ -57,11 +58,16 @@ using UnityEngine;
                         me = new Mainmenu();
                     }*/
                 }
-                    if (isBuilt == true)
+                if (isBuilt == true)
                 {
-
-                if (currpos == outpos)
+                var ttmp2 = FindObjectOfType<Mainmenu>();
+                var outpos2 = ttmp2.outpostion;
+                var currpos2 = ttmp2.transform.position;
+                if (currpos2 != outpos2)
                 {
+                    Debug.Log(currpos2);
+                    ttmp2.hidemenu();
+                }
                     /*vcurrposar ff = GameObject.FindObjectOfType<Mainmenu>();
                     ff.hidemenu();*/
                     Debug.Log(gameObject.name + "removemenu");
@@ -75,10 +81,6 @@ using UnityEngine;
                     //var tmp = menu.GetComponent<Mainmenu>();
                     //tmp.dispalymenu();
                 }
-                else
-                {
-                    currpos = outpos;
-                }
 
                    /* if (!FindObjectOfType<TowerBlockCollection>().roadBlocker)
                     {
@@ -87,11 +89,6 @@ using UnityEngine;
                     }*/
                 }
                }
-            else
-            {
-                Debug.Log("on UI");
-            }
-        }
         private void OnCollisionEnter(Collision collision)
         {
            

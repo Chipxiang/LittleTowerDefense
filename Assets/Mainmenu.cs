@@ -8,7 +8,7 @@ public class Mainmenu : MonoBehaviour
             public static bool currentmenu;
             private readonly Object _menu;
             GameObject menu;
-            Vector3 outpostion;
+            public Vector3 outpostion;
             bool isshow;
             Camera maincam;
         GameObject cellobj;

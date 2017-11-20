@@ -32,7 +32,11 @@ public class Mainmenu : MonoBehaviour
             Debug.Log(gameObject.transform.position+ outpostion);
             if (gameObject.transform.position == outpostion)
             {
+                if (MoneyManager.CurrentMoney < 20)
+                    gameObject.GetComponentInChildren<Button>().interactable = false;
+                else gameObject.GetComponentInChildren<Button>().interactable = true;
                 Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
+
             screenPos.x = screenPos.x - 3f;
             //screenPos.y = screenPos.y + 250f;
             //Debug.Log(pos.position);

@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-
-
     public class Remenu : MonoBehaviour
     {
         private UnityEngine.Events.UnityAction m_MyFirstAction;
@@ -59,9 +57,10 @@ using UnityEngine.UI;
         void test()
         {
             Destroy(tower);
+            MoneyManager.AddMoney(18);
             Debug.Log("destoryy~~");
             gameObject.transform.position = outpostion;
-        cellobject.GetComponent<Cell>().isBuilt = false;
+            cellobject.GetComponent<Cell>().isBuilt = false;
     }
 
     public void hidemenu()

@@ -12,13 +12,11 @@ public class GameImfomation : MonoBehaviour {
     static float info_speed;
     static int info_valuse;
     static Text[] test;
-    static Vector3 endlocation;
+    private Vector3 endPosition;
     // Use this for initialization
     void Start()
     {
-        endlocation.x = -35f;
-        endlocation.y = 20f;
-        endlocation.z = 0f;
+        endPosition = new Vector3(-35, 20, 0);
         imfo = gameObject.GetComponent<Text>();
         //Updateinfo(1,10);
         spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
@@ -37,17 +35,16 @@ public class GameImfomation : MonoBehaviour {
         //imfo.text = "";
 
     }*/
-    public static void infomoving(int nextwave,float timeratio)
+    public void infomoving(int nextwave,float timeratio)
     {
        // Debug.Log("moving" + nextwave);
         foreach (Text wavename in test)
-        {;
-            if (wavename.name == "Text" + nextwave.ToString())
-            {
+        {
+           if (wavename.name == "Text" + nextwave.ToString())
+           {
                 var location = wavename.GetComponent<Transform>();
-                location.position = (endlocation - location.position) * timeratio + location.position;
-
-
+                location.position = (endPosition - location.position) * timeratio + location.position;
+                Debug.Log(location.position);
             }
         }
 

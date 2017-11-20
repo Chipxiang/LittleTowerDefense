@@ -56,7 +56,7 @@ namespace Assets.Code
             {
                 for (int i = 0; i < MAX_WAVE; i++)
                 {
-                    GameImfomation.GetWaveInfo(i, MaxMonsterCount[i], Damage, Speed);
+                    GameImfomation.GetWaveInfo(i+1, MaxMonsterCount[i], Damage, Speed);
                 }
                 flag++;
 

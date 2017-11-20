@@ -7,16 +7,14 @@ namespace Assets.Code.Menus
 {
     public class Cell : MonoBehaviour
     {
-        public static bool path_flag;
-        public static bool isbulint;//for build or for destory
-        public static bool isclick;
+        private  bool path_flag;
+        private bool isbulint;//for build or for destory
         Transform cellpos;
         // Use this for initialization
         void Start()
         {
             isbulint = false;
             path_flag = true;
-            isclick = false;
             cellpos = gameObject.GetComponent<Transform>();
         }
 
@@ -27,34 +25,42 @@ namespace Assets.Code.Menus
         private void OnMouseDown()
         {
             Debug.Log(gameObject.name);
-            Debug.Log(isclick);
-            if (isclick == false)
+            if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
-                isclick = true;
-                if (isbulint == false)
-                {
+
+                    if (isbulint == false)
+                    {
                     //var ff = Object.FindObjectOfType<Mainmenu>();
                     //Debug.Log(ff.name);
                     //Debug.Log(menu.name);
+                         Debug.Log(gameObject.name+ "builtmenu");
+                        var ff = GameObject.FindObjectOfType<Mainmenu>();
+                        ff.dispalymenu(cellpos);
+                        //var tmp = menu.GetComponent<Mainmenu>();
+                        //tmp.dispalymenu();
+                        /*var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
+                        if (FindObjectOfType<TowerBlockCollection>().Spawn(towerpos))
+                        {
+                            Mainmenu me;
+                            me = new Mainmenu();
+                        }*/
+                    }
+                    else if (isbulint == true)
+                {
                     var ff = GameObject.FindObjectOfType<Mainmenu>();
-                    Debug.Log(ff.name);
-                    ff.dispalymenu(cellpos);
-                    //var tmp = menu.GetComponent<Mainmenu>();
-                    //tmp.dispalymenu();
-                    /*var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
-                    if (FindObjectOfType<TowerBlockCollection>().Spawn(towerpos))
-                    {
-                        Mainmenu me;
-                        me = new Mainmenu();
-                    }*/
-                }
-            }
-                else if (isclick == true)
-            {
-                isclick = false;
-                var ff = GameObject.FindObjectOfType<Mainmenu>();
-                ff.hidemenu();
+                    ff.hidemenu();
+                    Debug.Log(gameObject.name + "removemenu");
+                    var re = GameObject.FindObjectOfType<Remenu>();
+                    re.dispalyremenu(cellpos);
 
+                    Debug.Log(gameObject.name);
+                    Debug.Log("removemenu");
+
+                }
+               }
+            else
+            {
+                Debug.Log("on UI");
             }
         }
         private void OnCollisionEnter(Collision collision)

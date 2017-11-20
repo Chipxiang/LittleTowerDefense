@@ -8,9 +8,11 @@ namespace Assets.Code
 {
     public class Spawning : MonoBehaviour
     {
+        
         private const float WaveCd = 20f;
         private const float SpawnTime = 0.8f;
         private const int MaxMonsterCount = 10;
+        private const int MAX_WAVE = 3;
         private static Object _EnemyPrefab;
         private float _lastspawn;
         private Transform _holder;
@@ -32,23 +34,24 @@ namespace Assets.Code
         {
             if (wave == 1 && monsternumber <= MaxMonsterCount)
             {
+                GameImfomation.hideinfo();
                 if ((Time.time - _lastspawn) < SpawnTime) return;
                 _lastspawn = Time.time;
                 Spawn();
-                GameImfomation.Updateinfo();
                 monsternumber++;
                 if (monsternumber == 10)
                 {
                     nextwave();
+                    GameImfomation.Updateinfo(wave, MaxMonsterCount);
                 }
             }
 
-            else if (wave>1 &&(Time.time - spawn_time) >= WaveCd && monsternumber <= MaxMonsterCount)
+            else if ( (wave>1 && wave<=MAX_WAVE) && (Time.time - spawn_time) >= WaveCd && monsternumber <= MaxMonsterCount)
             {
+                GameImfomation.hideinfo();
                 if ((Time.time - _lastspawn) < SpawnTime) return;
                 _lastspawn = Time.time;
                 Spawn();
-                GameImfomation.Updateinfo();
                 monsternumber++;
                 if (monsternumber == 10)
                 {
@@ -56,7 +59,13 @@ namespace Assets.Code
 
                  }
             }
-            GameImfomation.Updateinfo();
+            GameImfomation.Updateinfo(wave, monsternumber);
+            if (wave == MAX_WAVE)
+            {
+                //胜负判定
+
+
+            }
         }
         void nextwave()
         {
@@ -82,6 +91,7 @@ namespace Assets.Code
             var s = ast.GetComponentInChildren<Enemy>();
             s.Initialize();
         }
+
         // Use this for initialization
         // Update is called once per frame
     }

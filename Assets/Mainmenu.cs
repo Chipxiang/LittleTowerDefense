@@ -5,6 +5,7 @@ namespace Assets.Code.Menus
 {
         public class Mainmenu : MonoBehaviour
     {
+        private UnityEngine.Events.UnityAction m_MyFirstAction;
             public static bool currentmenu;
             private readonly Object _menu;
             GameObject menu;
@@ -17,22 +18,27 @@ namespace Assets.Code.Menus
             gameObject.SetActive(true);
             isshow = false;
             maincam = FindObjectOfType<Camera>();
-            Debug.Log(outpostion);
+            //Debug.Log(outpostion);
+            InitializeButtons();
         }
         public void dispalymenu(Transform pos)
         {
-            if (isshow == false)
+            if (gameObject.transform.position == outpostion)
             {
-                isshow = true;
+                Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
+                screenPos.x = screenPos.x + 200f;
+                screenPos.y = screenPos.y + 250f;
+                //Debug.Log(pos.position);
+                //Debug.Log(screenPos);
+                gameObject.transform.position = screenPos;
+                //gameObject.transform.position = pos.position;
             }
-            Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
-            screenPos.x = screenPos.x + 200f;
-            screenPos.y = screenPos.y + 250f;
-            Debug.Log(pos.position);
-            Debug.Log(screenPos);
-            gameObject.transform.position = screenPos;
-            //gameObject.transform.position = pos.position;
-            InitializeButtons();
+            else if (gameObject.transform.position != outpostion)
+            {
+                //isshow = false;
+                gameObject.transform.position = outpostion;
+            }
+
         }
         /// <summary>
         /// Add listeners to the MainMenu buttons
@@ -40,19 +46,16 @@ namespace Assets.Code.Menus
         private void InitializeButtons()
         {
             var newb = gameObject.GetComponentInChildren<Button>();
-            Debug.Log(newb.name);
-            if ( newb.name== "Button")
+            //Debug.Log("name is "+newb.name);
+            if ( newb.name == "Button")
             {
-                newb.onClick.AddListener(test);
+                newb.onClick.AddListener(() => test());
             }
         }
         void test()
         {
             Debug.Log("rua");
             gameObject.transform.position = outpostion;
-        }
-        void Update()
-        {
         }
         public void hidemenu()
         {

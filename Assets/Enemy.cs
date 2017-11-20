@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     // public static EnemySpawner Manager;
     void Start()
     {
-        
     }
     public void Initialize ()
     {

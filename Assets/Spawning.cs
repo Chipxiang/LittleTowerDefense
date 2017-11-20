@@ -20,6 +20,8 @@ namespace Assets.Code
         private float spawn_time;
         public static int wave;
         public static int monsternumber;
+        private float quicker;//special monster
+        private float tanker;//special monster
         internal void Start()
         {
             this.transform.position = new Vector3(0f, 0.7f, 4f);
@@ -31,26 +33,35 @@ namespace Assets.Code
             monsternumber = 0;
             //Asteroid.Manager = this;
         }
+/*
+        var bb = FindObjectOfType<Spawning>();
+        var ene = bb.GetComponentInChildren<Enemy>();
+        float damage = ene.Damage;
+        float speed = ene.Speed;
+        GameImfomation.GetWaveInfo(wave, MaxMonsterCount, damage, speed);
+            GameImfomation.infomoving(wave);*/
         internal void FixedUpdate()
         {
             if (wave == 1 && monsternumber <= MaxMonsterCount)
             {
-                GameImfomation.hideinfo();
+                //GameImfomation.hideinfo();
                 if ((Time.time - _lastspawn) < SpawnTime) return;
                 _lastspawn = Time.time;
                 Spawn();
                 monsternumber++;
-                if (monsternumber == 10)
-                {
-                    nextwave();
-                   // GameImfomation.Updateinfo(wave, MaxMonsterCount);
-                    GameImfomation.Updateinfo();
-                }
+                //GameImfomation.Updateinfo(wave, MaxMonsterCount);
+            }
+            else if (monsternumber >= MaxMonsterCount)
+            {
+                if (gameObject.transform.childCount == 0)
+                { nextwave(); }
+
+                //GameImfomation.Updateinfo(wave, MaxMonsterCount);
             }
 
             else if ( (wave>1 && wave<=MAX_WAVE) && (Time.time - spawn_time) >= WaveCd && monsternumber <= MaxMonsterCount)
             {
-                GameImfomation.hideinfo();
+                //GameImfomation.hideinfo();
                 if ((Time.time - _lastspawn) < SpawnTime) return;
                 _lastspawn = Time.time;
                 Spawn();
@@ -59,8 +70,8 @@ namespace Assets.Code
                 {
                     nextwave();
                  }
+                //GameImfomation.Updateinfo(wave, MaxMonsterCount);
             }
-            GameImfomation.Updateinfo(wave, monsternumber);
             if (wave > MAX_WAVE)
             {
                 var aa = FindObjectOfType<Spawning>().transform;

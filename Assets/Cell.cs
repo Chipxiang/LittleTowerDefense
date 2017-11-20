@@ -55,7 +55,18 @@ namespace Assets.Code.Menus
 
                     Debug.Log(gameObject.name);
                     Debug.Log("removemenu");
-
+                    //var ff = GameObject.FindObjectOfType<Mainmenu>();
+                    //Debug.Log(ff.name);
+                    //ff.dispalymenu(cellpos);
+                    //var tmp = menu.GetComponent<Mainmenu>();
+                    //tmp.dispalymenu();
+                    var towerpos = new Vector3(transform.position.x, transform.position.y + 0.7f, transform.position.z);
+                    StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(towerpos));
+                    if (!FindObjectOfType<TowerBlockCollection>().roadBlocker)
+                    {
+                        Mainmenu me;
+                        me = new Mainmenu();
+                    }
                 }
                }
             else

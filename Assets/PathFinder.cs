@@ -19,6 +19,7 @@ public class PathFinder : MonoBehaviour {
         path = new NavMeshPath();
         var targetPos = target.position;
         agent.CalculatePath(targetPos, path);
+        Debug.Log("Calculated Path");
         if (path.status == NavMeshPathStatus.PathPartial)
         {
             return false;

@@ -25,4 +25,15 @@ public class GameImfomation : MonoBehaviour {
         imfo.text = "";
 
     }
+	public static void Updateinfo ()
+	{
+		var _enemySpeed = FindObjectOfType<Enemy>().Speed;
+		var _enemyDamage = FindObjectOfType<Enemy>().Damage;
+		
+        spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
+		imfo.text = "Wave" + string.Format("{0}", Assets.Code.Spawning.wave) + "\n"
+		            + "MonsterNumber" + string.Format("{0}", spaw.childCount) + "\n"
+		            + "Enemy Speed: " + string.Format("{0}", _enemySpeed) + "\n"
+		            + "Enemy Damage: " + string.Format("{0}", _enemyDamage);
+	}
 }

@@ -8,8 +8,12 @@ namespace Assets.Code
 {
     public class Spawning : MonoBehaviour
     {
+<<<<<<< HEAD
         
         private const float WaveCd = 20f;
+=======
+        public const float WaveCd = 5f;
+>>>>>>> 4b48d69c7053bc877270f39b3bc45db91d78da5c
         private const float SpawnTime = 0.8f;
         private const int MaxMonsterCount = 10;
         private const int MAX_WAVE = 3;

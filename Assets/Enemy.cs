@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
   public float Health;
   public float Damage;
   public float Speed;
-  public int valve;
+  public int value;
     private NavMeshAgent agent;
     private Transform Target;
     // public static EnemySpawner Manager;
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
         Health = 10000f;
         Damage = 1f;
         Speed = 0.5f;
-        valve = 10;
+        value = 10;
         this.agent = this.GetComponent<NavMeshAgent>();
         this.transform.position = new Vector3(0, 0.7f, 4);
         agent.destination = Target.position;
@@ -43,7 +43,7 @@ public class Enemy : MonoBehaviour
                 if (Health <= 0)
                 {
                     Destroy(gameObject);
-                    MoneyManager.AddMoney(valve);
+                    MoneyManager.AddMoney(value);
                 }
                 other.gameObject.GetComponentInChildren<Bullet>().flag = false;
             }

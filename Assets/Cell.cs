@@ -31,6 +31,14 @@ using UnityEngine;
             Debug.Log(gameObject.name);
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
+            var ttmp = FindObjectOfType<Remenu>();
+            var outpos = ttmp.outpostion;
+            var currpos = ttmp.transform.position;
+           if (currpos != outpos)
+            {
+                Debug.Log(currpos);
+                ttmp.hidemenu();
+            }
                     if (isBuilt == false)
                     {
                     //var ff = Object.FindObjectOfType<Mainmenu>();
@@ -51,7 +59,10 @@ using UnityEngine;
                 }
                     if (isBuilt == true)
                 {
-                    /*var ff = GameObject.FindObjectOfType<Mainmenu>();
+
+                if (currpos == outpos)
+                {
+                    /*vcurrposar ff = GameObject.FindObjectOfType<Mainmenu>();
                     ff.hidemenu();*/
                     Debug.Log(gameObject.name + "removemenu");
                     var re = GameObject.FindObjectOfType<Remenu>();
@@ -63,7 +74,11 @@ using UnityEngine;
                     //ff.dispalymenu(cellpos);
                     //var tmp = menu.GetComponent<Mainmenu>();
                     //tmp.dispalymenu();
-                   
+                }
+                else
+                {
+                    currpos = outpos;
+                }
 
                    /* if (!FindObjectOfType<TowerBlockCollection>().roadBlocker)
                     {

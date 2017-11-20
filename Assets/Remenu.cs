@@ -9,7 +9,7 @@ using UnityEngine.UI;
         public static bool currentmenu;
         private readonly Object _menu;
         GameObject menu;
-        private Vector3 outpostion;
+        public Vector3 outpostion;
         bool isshow;
         Camera maincam;
         GameObject tower;

@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Assets.Code.Menus
-{
+
     public class Cell : MonoBehaviour
     {
         private  bool path_flag;
-        public bool isbulint;//for build or for destory
+        public bool isBuilt;//for build or for destory
         public GameObject Toweron;
         Transform cellpos;
         // Use this for initialization
         void Start()
         {
-            isbulint = false;
+            isBuilt = false;
             path_flag = true;
             cellpos = gameObject.GetComponent<Transform>();
         }
@@ -29,7 +28,7 @@ namespace Assets.Code.Menus
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
 
-                    if (isbulint == false)
+                    if (isBuilt == false)
                     {
                     //var ff = Object.FindObjectOfType<Mainmenu>();
                     //Debug.Log(ff.name);
@@ -47,7 +46,7 @@ namespace Assets.Code.Menus
                         me = new Mainmenu();
                     }*/
                 }
-                    if (isbulint == true)
+                    if (isBuilt == true)
                 {
                     /*var ff = GameObject.FindObjectOfType<Mainmenu>();
                     ff.hidemenu();*/
@@ -77,11 +76,8 @@ namespace Assets.Code.Menus
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.GetComponent<Enemy>())
-            {
-
-            }
+           
         }
 
     }
-}
+

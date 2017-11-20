@@ -2,8 +2,7 @@
 using UnityEngine.UI;
 
 
-namespace Assets.Code.Menus
-{
+
     public class Remenu : MonoBehaviour
     {
         private UnityEngine.Events.UnityAction m_MyFirstAction;
@@ -62,4 +61,3 @@ namespace Assets.Code.Menus
         // Update is called once per frame
     }
 
-}

@@ -1,9 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Code.Menus
-{
-        public class Mainmenu : MonoBehaviour
+public class Mainmenu : MonoBehaviour
     {
         private UnityEngine.Events.UnityAction m_MyFirstAction;
             public static bool currentmenu;
@@ -57,17 +56,14 @@ namespace Assets.Code.Menus
             //Debug.Log("name is "+newb.name);
             if ( newb.name == "Button")
             {
-                newb.onClick.AddListener(() => test());
+                newb.onClick.AddListener(() => Test());
             }
         }
-        void test()
+        void Test()
         {
             Debug.Log("rua");
             gameObject.transform.position = outpostion;
-           var towerpos = new Vector3(cellpos.position.x, cellpos.position.y + 0.7f, cellpos.position.z);
-           StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(towerpos));
-            cellobj.GetComponent<Cell>().isbulint = true;
-
+            StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
         }
 
         public void hidemenu()
@@ -77,5 +73,3 @@ namespace Assets.Code.Menus
             Debug.Log(outpostion);
         }
     }
-
-}

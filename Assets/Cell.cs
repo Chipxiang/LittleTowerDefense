@@ -22,12 +22,15 @@ using UnityEngine;
         void Update()
         {
         }
-        private void OnMouseDown()
+        private void OnMouseUpAsButton()
         {
+        if(Time.timeScale == 0)
+        {
+            return;
+        }
             Debug.Log(gameObject.name);
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
-
                     if (isBuilt == false)
                     {
                     //var ff = Object.FindObjectOfType<Mainmenu>();
@@ -52,7 +55,7 @@ using UnityEngine;
                     ff.hidemenu();*/
                     Debug.Log(gameObject.name + "removemenu");
                     var re = GameObject.FindObjectOfType<Remenu>();
-                    re.dispalyremenu(gameObject);
+                    re.dispalyremenu(gameObject, Toweron);
                     Debug.Log(gameObject.name);
                     Debug.Log(re.name);
                     //var ff = GameObject.FindObjectOfType<Mainmenu>();

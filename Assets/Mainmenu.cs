@@ -16,7 +16,7 @@ public class Mainmenu : MonoBehaviour
             void Start()
         {
 
-            outpostion = new Vector3(-35f,300f,0f);
+            outpostion = new Vector3(-50f,300f,0f);
             gameObject.transform.position = outpostion;
             gameObject.SetActive(true);
             isshow = false;
@@ -33,11 +33,11 @@ public class Mainmenu : MonoBehaviour
             if (gameObject.transform.position == outpostion)
             {
                 Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
-                screenPos.x = screenPos.x + 200f;
-                screenPos.y = screenPos.y + 250f;
-                //Debug.Log(pos.position);
-                //Debug.Log(screenPos);
-                gameObject.transform.position = screenPos;
+            screenPos.x = screenPos.x - 3f;
+            //screenPos.y = screenPos.y + 250f;
+            //Debug.Log(pos.position);
+            //Debug.Log(screenPos);
+            gameObject.transform.position = screenPos;
                 //gameObject.transform.position = pos.position;
             }
             else if (gameObject.transform.position != outpostion)
@@ -52,9 +52,10 @@ public class Mainmenu : MonoBehaviour
         /// </summary>
         private void InitializeButtons()
         {
+        
             var newb = gameObject.GetComponentInChildren<Button>();
             //Debug.Log("name is "+newb.name);
-            if ( newb.name == "Button")
+            if ( newb.name == "Built")
             {
                 newb.onClick.AddListener(() => Test());
             }

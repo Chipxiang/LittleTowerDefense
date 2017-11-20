@@ -12,6 +12,8 @@ using UnityEngine.UI;
         private Vector3 outpostion;
         bool isshow;
         Camera maincam;
+        GameObject tower;
+         GameObject cellobject;
         void Start()
         {
             outpostion = new Vector3(-100f, -300f, 0f);
@@ -22,18 +24,19 @@ using UnityEngine.UI;
             //Debug.Log(outpostion);
             InitializeButtons();
         }
-        public void dispalyremenu(GameObject cellobj)
+        public void dispalyremenu(GameObject cellobj, GameObject toweron)
         {
+        cellobject = cellobj;
+            tower = toweron;
             var pos = cellobj.transform;
             if (gameObject.transform.position == outpostion)
             {
                 Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
                 Debug.Log("screenPos"+screenPos);
-                screenPos.x = screenPos.x + 600f;
-                screenPos.y = screenPos.y + 500f;
-                //Debug.Log(pos.position);
-                //Debug.Log(screenPos);
-                gameObject.transform.position = screenPos;
+            //Debug.Log(pos.position);
+            //Debug.Log(screenPos);
+            screenPos.x = screenPos.x - 3f;
+            gameObject.transform.position = screenPos;
                 //gameObject.transform.position = pos.position;
             }
             else if (gameObject.transform.position != outpostion)
@@ -55,9 +58,19 @@ using UnityEngine.UI;
 
         void test()
         {
+            Destroy(tower);
             Debug.Log("destoryy~~");
             gameObject.transform.position = outpostion;
-        }
-        // Update is called once per frame
+        cellobject.GetComponent<Cell>().isBuilt = false;
     }
+
+    public void hidemenu()
+    {
+        Debug.Log("hide");
+        gameObject.transform.position = outpostion;
+        Debug.Log(outpostion);
+
+    }
+    // Update is called once per frame
+}
 

@@ -24,6 +24,7 @@ using Object = UnityEngine.Object;
         var pos = new Vector3(cell.transform.position.x, cell.transform.position.y + 0.7f, cell.transform.position.z);
         Quaternion rotation = Quaternion.Euler(0, 0, 0);
         var tower = (GameObject)Object.Instantiate(_TowerBlockPrefab, pos, rotation, _holder);
+        cell.GetComponent<Cell>().Toweron = tower;
         for (int i = 0; i<tower.GetComponentsInChildren<MeshRenderer>().Length;i++){
             tower.GetComponentsInChildren<MeshRenderer>()[i].enabled = false;
         }

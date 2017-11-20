@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     {
         Target = FindObjectOfType<Base>().transform;
         Health = 10000f;
-        Damage = 5f;
+        Damage = 1f;
         Speed = 0.5f;
         valve = 10;
         this.agent = this.GetComponent<NavMeshAgent>();

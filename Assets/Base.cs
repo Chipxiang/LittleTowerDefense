@@ -16,5 +16,11 @@ public class Base : MonoBehaviour {
         {
             SliderManager.DeductHealth(collision.collider.GetComponent<Enemy>().Damage);
         }
+        if (SliderManager.Gethealth() == 0 )
+        {
+            Time.timeScale = 0;
+            Debug.Log("lose");
+
+        }
     }
 }

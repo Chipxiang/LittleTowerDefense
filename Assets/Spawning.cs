@@ -43,7 +43,8 @@ namespace Assets.Code
                 if (monsternumber == 10)
                 {
                     nextwave();
-                    GameImfomation.Updateinfo(wave, MaxMonsterCount);
+                   // GameImfomation.Updateinfo(wave, MaxMonsterCount);
+                    GameImfomation.Updateinfo();
                 }
             }
 
@@ -57,15 +58,18 @@ namespace Assets.Code
                 if (monsternumber == 10)
                 {
                     nextwave();
-
                  }
             }
             GameImfomation.Updateinfo(wave, monsternumber);
-            if (wave == MAX_WAVE)
+            if (wave > MAX_WAVE)
             {
-                //胜负判定
-
-
+                var aa = FindObjectOfType<Spawning>().transform;
+                var d = aa.childCount;
+                if (d == 0)
+                {
+                    Time.timeScale = 0;
+                    Debug.Log("Win");
+                }
             }
         }
         void nextwave()

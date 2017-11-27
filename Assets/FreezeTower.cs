@@ -40,7 +40,12 @@ public class FreezeTower : MonoBehaviour {
     {
         for(int i=0; i < enemyInRange.Count; i++)
         {
-            enemyInRange[i].GetComponent<Freeze>().freezeLevel--;
+            if(enemyInRange[i])
+                enemyInRange[i].GetComponent<Freeze>().freezeLevel--;
+            else
+            {
+                enemyInRange.RemoveAt(i);
+            }
         }
     }
 }

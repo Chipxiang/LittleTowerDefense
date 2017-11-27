@@ -57,23 +57,46 @@ public class Mainmenu : MonoBehaviour
         private void InitializeButtons()
         {
         
-            var newb = gameObject.GetComponentInChildren<Button>();
-            //Debug.Log("name is "+newb.name);
-            if ( newb.name == "Built")
+            var neww = gameObject.GetComponentsInChildren<Button>();
+        //Debug.Log("name is "+newb.name);
+        foreach (var newb in neww)
+        {
+            if (newb.name == "BasicTower")
             {
-                newb.onClick.AddListener(() => Test());
+                newb.onClick.AddListener(() => Basic());
+            }
+            else if (newb.name == "FrozenTower")
+            {
+                newb.onClick.AddListener(() => Frozen());
+            }
+            else if (newb.name == "ShockTower")
+            {
+                newb.onClick.AddListener(() => Shock());
             }
         }
-        void Test()
+    }
+        void Basic()
         {
             Debug.Log("rua");
             gameObject.transform.position = outpostion;
             StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
         }
 
-        public void hidemenu()
+    void Frozen()
+    {
+        Debug.Log("hhh");
+        gameObject.transform.position = outpostion;
+        StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
+    }
+    void Shock()
+    {
+        Debug.Log("fff");
+        gameObject.transform.position = outpostion;
+        StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
+    }
+    public void hidemenu()
         {
-            Debug.Log("hide");
+            Debug.Log("hhh");
             gameObject.transform.position = outpostion;
             Debug.Log(outpostion);
         }

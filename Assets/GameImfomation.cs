@@ -37,16 +37,7 @@ public class GameImfomation : MonoBehaviour {
     }*/
     public void infomoving(int nextwave,float timeratio)
     {
-       // Debug.Log("moving" + nextwave);
-        foreach (Text wavename in test)
-        {
-           if (wavename.name == "Text" + nextwave.ToString())
-           {
-                var location = wavename.GetComponent<Transform>();
-                location.position = (endPosition - location.position) * timeratio + location.position;
-                Debug.Log(location.position);
-            }
-        }
+        gameObject.transform.position = gameObject.transform.position - new Vector3(5f, 0f, 0f);
 
     }
     public static void eclipse(int wave)

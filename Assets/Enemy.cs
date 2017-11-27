@@ -15,16 +15,27 @@ public class Enemy : MonoBehaviour
     void Start()
     {
     }
-    public void Initialize (float health, float damage,float speed,int val)
+    public void Initialize (float health, float damage,float speed,int val,int type)
     {
+        var col = this.GetComponent<Renderer>();
         Target = FindObjectOfType<Base>().transform;
         this.agent = this.GetComponent<NavMeshAgent>();
-        this.transform.position = new Vector3(0, 0.7f, 4);
+        this.transform.position = new Vector3(0f, 0.7f, 4f);
         agent.destination = Target.position;
         Health = health;
         Damage = damage;
         value = val;
         Speed = speed;
+        if(type==1)//fast ene
+        {
+            Color fast = Color.green;
+            col.material.color = fast;
+        }
+        else if (type == 2)
+        {
+            Color strong = Color.yellow;
+            col.material.color = strong;
+        }
     }
 
    internal void OnCollisionEnter (Collision other) {

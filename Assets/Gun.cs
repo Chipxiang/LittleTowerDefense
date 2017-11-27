@@ -19,7 +19,7 @@ using UnityEngine;
             var bullets = GameObject.Find("bullets");
             Bullets = new BulletMan(bullets.transform);
             var pos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-            Bullets.Spawn(pos+transform.up*0.1f, transform.rotation, 3f, target);
+            Bullets.Spawn(pos+transform.up*0.1f, transform.rotation, 4f, target);
         }
     private void Update()
     {

@@ -22,7 +22,9 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        if (target != null)
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        else Die();
     }
     private void Die()
     {

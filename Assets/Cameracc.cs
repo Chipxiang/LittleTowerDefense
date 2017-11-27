@@ -16,9 +16,7 @@ public class Cameracc : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(Screen.height);
-        Debug.Log(Screen.width);
-        Debug.Log(Screen.resolutions);
+        Camera.main.aspect = 1.33f;
         //Quaternion rotation = Quaternion.Euler(-2.222f, 0, 0);
         //transform.SetPositionAndRotation(new Vector3(3.78f, 2.47f, -87.14f), rotation);
     }
@@ -28,36 +26,34 @@ public class Cameracc : MonoBehaviour
 
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
-            
-            transform.Translate(Vector3.up*0.01f * panSpeed * Time.deltaTime, Space.World);
-            Debug.Log(transform.position);
+
+            transform.Translate(Vector3.forward *0.01f * panSpeed * Time.deltaTime, Space.World);
         }
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness)
-        {
-            transform.Translate(Vector3.down * 0.01f* panSpeed * Time.deltaTime, Space.World);
-            Debug.Log(transform.position);
+        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness){
+
+            transform.Translate(Vector3.back *0.01f* panSpeed * Time.deltaTime, Space.World);
+        
         }
         if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness)
         {
             transform.Translate(Vector3.right * 0.01f * panSpeed * Time.deltaTime, Space.World);
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
         }
         if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness)
         {
             transform.Translate(Vector3.left * 0.01f * panSpeed * Time.deltaTime, Space.World);
-            Debug.Log(transform.position);
+            //Debug.Log(transform.position);
         }
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-
-            transform.Translate(Vector3.forward * panSpeed * Time.deltaTime, Space.World);
-            Debug.Log(transform.position);
+            transform.Translate(Vector3.down * panSpeed * Time.deltaTime, Space.World);
+            //Debug.Log(transform.position);
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-
-            transform.Translate(Vector3.back * panSpeed * Time.deltaTime, Space.World);
-            Debug.Log(transform.position);
+            transform.Translate(Vector3.up * panSpeed * Time.deltaTime, Space.World);
+            
+           // Debug.Log(transform.position);
         }
 
 

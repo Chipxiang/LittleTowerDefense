@@ -66,7 +66,7 @@ namespace Assets.Code
             {
                 for (int i = 0; i < MAX_WAVE; i++)
                 {
-                    //GameImfomation.GetWaveInfo(i+1, MaxMonsterCount[i], Damage, Speed);
+                    GameImfomation.GetWaveInfo(i+1, NorMonsterNum[i], StrMonsterNum[i], FasMonsterNum[i]);
                 }
                 flag++;
 
@@ -83,7 +83,9 @@ namespace Assets.Code
                 GameImfomation.eclipse(wave);
                 _lastspawn = Time.time;
                 Spawn(SpawnSeq[wave-1][monsternumber]);
-                FindObjectOfType<GameImfomation>().infomoving(wave+1,monsternumber/ MaxMonsterCount[wave]);
+                float ratio = (float)(monsternumber+1)/(float)MaxMonsterCount[wave-1];
+                Debug.Log("input" + monsternumber+MaxMonsterCount[wave-1]+ monsternumber/MaxMonsterCount[wave-1]+"  "+ ratio);
+                FindObjectOfType<GameImfomation>().infomoving(wave+1, ratio);
                 monsternumber++;
             }
             else if (monsternumber >= MaxMonsterCount[wave-1])
@@ -100,7 +102,8 @@ namespace Assets.Code
                 _lastspawn = Time.time;
                 Spawn(SpawnSeq[wave - 1][monsternumber]);
                 monsternumber++;
-                 FindObjectOfType<GameImfomation>().infomoving(wave + 1, monsternumber / MaxMonsterCount[wave]); 
+                float ratio = (float)(monsternumber + 1) / (float)MaxMonsterCount[wave - 1];
+                FindObjectOfType<GameImfomation>().infomoving(wave + 1, ratio); 
                 if (monsternumber == MaxMonsterCount[wave - 1])
                 {
                     if (gameObject.transform.childCount == 0)

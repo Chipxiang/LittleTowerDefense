@@ -16,7 +16,7 @@ public class Mainmenu : MonoBehaviour
             void Start()
         {
 
-            outpostion = new Vector3(-50f,300f,0f);
+            outpostion = new Vector3(-600f,-600f,0f);
             gameObject.transform.position = outpostion;
             gameObject.SetActive(true);
             isshow = false;

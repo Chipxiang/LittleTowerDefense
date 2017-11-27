@@ -37,7 +37,9 @@ public class GameImfomation : MonoBehaviour {
     }*/
     public void infomoving(int nextwave,float timeratio)
     {
-        gameObject.transform.position = gameObject.transform.position - new Vector3(5f, 0f, 0f);
+        Debug.Log(gameObject.transform.position);
+        Debug.Log(timeratio);
+        gameObject.transform.position = gameObject.transform.position + new Vector3(-20f,0f,0f)* timeratio;
 
     }
     public static void eclipse(int wave)

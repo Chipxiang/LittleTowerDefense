@@ -15,7 +15,7 @@ public class Mainmenu : MonoBehaviour
     Transform cellpos;
     void Start()
     {
-        outpostion = new Vector3(-50f,300f,0f);
+        outpostion = new Vector3(-600f, -600f, 0f);
         gameObject.transform.position = outpostion;
         gameObject.SetActive(true);
         isshow = false;
@@ -55,19 +55,43 @@ public class Mainmenu : MonoBehaviour
     /// </summary>
     private void InitializeButtons()
     {
-        
-        var newb = gameObject.GetComponentInChildren<Button>();
+
+        var neww = gameObject.GetComponentsInChildren<Button>();
         //Debug.Log("name is "+newb.name);
-        if ( newb.name == "Built")
+        foreach (var newb in neww)
         {
-            newb.onClick.AddListener(() => Test());
+            if (newb.name == "BuildBasic")
+            {
+                newb.onClick.AddListener(() => Basic());
+            }
+            else if (newb.name == "BuildFrozen")
+            {
+                newb.onClick.AddListener(() => Frozen());
+            }
+            else if (newb.name == "BuildShock")
+            {
+                newb.onClick.AddListener(() => Shock());
+            }
         }
     }
-    void Test()
+    void Basic()
     {
         Debug.Log("rua");
         gameObject.transform.position = outpostion;
-        StartCoroutine(FindObjectOfType<FreezeTowerBlockCollection>().Spawn(cellobj));
+        StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
+    }
+
+    void Frozen()
+    {
+        Debug.Log("hhh");
+        gameObject.transform.position = outpostion;
+        StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
+    }
+    void Shock()
+    {
+        Debug.Log("fff");
+        gameObject.transform.position = outpostion;
+        StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
     }
 
     public void hidemenu()

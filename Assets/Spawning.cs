@@ -32,6 +32,7 @@ namespace Assets.Code
         public static int monsternumber;
         private float quicker;//special monster
         private float tanker;//special monster
+        private float begin_time;
         int flag;
         internal void Start()
         {
@@ -55,14 +56,14 @@ namespace Assets.Code
             this.transform.position = new Vector3(0f, 0.7f, 4f);
             _EnemyPrefab = Resources.Load("Enemy");
             _holder = this.transform;
-            _lastspawn = 5f;
-            spawn_time = 5f;
+            _lastspawn = 10f;
+            spawn_time = 10f;
             monsternumber = 0;
             flag = 0;
         }
         internal void Update()
         {
-            if (flag == 5)//wrong happpen as beginin, so we 
+            /*if (flag == 5)//wrong happpen as beginin, so we 
             {
                 for (int i = 0; i < MAX_WAVE; i++)
                 {
@@ -71,21 +72,27 @@ namespace Assets.Code
                 flag++;
 
             }
+            */
             if (flag <= 15)
             {
+                GameImfomation.GetWaveInfo(1, NorMonsterNum[0], StrMonsterNum[0], FasMonsterNum[0]);
                 flag++;
                 return;
+
             }
             if (wave == 1 && monsternumber < MaxMonsterCount[wave - 1])
             {
+
                 //GameImfomation.hideinfo();
                 if ((Time.time - _lastspawn) < SpawnTime) return;
-                GameImfomation.eclipse(wave);
+                if (monsternumber == 0)
+                {
+                    Debug.Log("1st wave begins:" + Time.time);
+                }
+                //GameImfomation.eclipse(wave);
                 _lastspawn = Time.time;
                 Spawn(SpawnSeq[wave - 1][monsternumber]);
-                float ratio = (float)(monsternumber + 1) / (float)MaxMonsterCount[wave - 1];
-                Debug.Log("input" + monsternumber + MaxMonsterCount[wave - 1] + monsternumber / MaxMonsterCount[wave - 1] + "  " + ratio);
-                FindObjectOfType<GameImfomation>().infomoving(wave + 1, ratio);
+                //FindObjectOfType<GameImfomation>().infomoving(wave + 1, ratio);
                 monsternumber++;
             }
             else if (monsternumber >= MaxMonsterCount[wave - 1])
@@ -96,14 +103,19 @@ namespace Assets.Code
 
             else if ((wave > 1 && wave <= MAX_WAVE) && (Time.time - spawn_time) >= WaveCd && monsternumber < MaxMonsterCount[wave - 1])
             {
+
                 //GameImfomation.hideinfo();
                 if ((Time.time - _lastspawn) < SpawnTime) return;
-                GameImfomation.eclipse(wave);
+                if (monsternumber == 0)
+                {
+                    Debug.Log(wave + "st wave begins:" + Time.time);
+                }
+                //GameImfomation.eclipse(wave);
                 _lastspawn = Time.time;
                 Spawn(SpawnSeq[wave - 1][monsternumber]);
                 monsternumber++;
-                float ratio = (float)(monsternumber + 1) / (float)MaxMonsterCount[wave - 1];
-                FindObjectOfType<GameImfomation>().infomoving(wave + 1, ratio);
+                float ratio = (float)1/(float)MaxMonsterCount[wave - 1];
+                //FindObjectOfType<GameImfomation>().infomoving(wave + 1, ratio);
                 if (monsternumber == MaxMonsterCount[wave - 1])
                 {
                     if (gameObject.transform.childCount == 0)
@@ -117,15 +129,23 @@ namespace Assets.Code
                 if (d == 0)
                 {
                     Time.timeScale = 0;
-                    Debug.Log("Win");
+                    GameObject w = (GameObject)Instantiate((GameObject)Resources.Load("WIN"));
+                    w.GetComponent<Transform>().SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
+                    w.GetComponent<Transform>().position = new Vector3(250, 150, 0);
+                }
+                foreach (Cell g in GameObject.FindObjectsOfType<Cell>())
+                {
+                    g.GetComponent<Cell>().enabled = false;
                 }
             }
         }
         void nextwave()
         {
+            Debug.Log(wave + "st wave ends:" + Time.time);
             wave++;
             spawn_time = Time.time;
             monsternumber = 0;
+            GameImfomation.GetWaveInfo(wave, NorMonsterNum[wave-1], StrMonsterNum[wave-1], FasMonsterNum[wave-1]);
         }
         private void Spawn(int type)
         {

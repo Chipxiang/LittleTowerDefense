@@ -20,13 +20,9 @@ public class Base : MonoBehaviour {
         if (SliderManager.Gethealth() == 0 )
         {
             Time.timeScale = 0;
-            foreach (Text w in FindObjectsOfType<Text>())
-            {
-                if (w.name == "Lose")
-                {
-                    w.enabled = true;
-                }
-            }
+            GameObject w = (GameObject)Instantiate((GameObject)Resources.Load("LOSE"));
+            w.GetComponent<Transform>().SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
+            w.GetComponent<Transform>().position = new Vector3(250, 150, 0);
             Debug.Log("lose");
 
         }

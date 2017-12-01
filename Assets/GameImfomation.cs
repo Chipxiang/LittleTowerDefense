@@ -7,11 +7,12 @@ public class GameImfomation : MonoBehaviour {
     Object ene;
     static Transform spaw;
     static int info_wave;
-    static int info_maxnum;
+    static int info_normnum;
     static float info_damage;
     static float info_speed;
     static int info_valuse;
-    static Text[] test;
+    static Text test;
+    static Transform icon;
     private Vector3 endPosition;
     // Use this for initialization
     void Start()
@@ -20,14 +21,17 @@ public class GameImfomation : MonoBehaviour {
         imfo = gameObject.GetComponent<Text>();
         //Updateinfo(1,10);
         spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
-        test = gameObject.GetComponentsInChildren<Text>();
+        test = gameObject.GetComponentInChildren<Text>();
+        icon = test.GetComponent<Transform>();
     }
-	
-	// Update is called once per frame
-	public static void Updateinfo (int wave) {
+    internal void FixedUpdate()
+    {
+        icon.position = icon.position - new Vector3(1f, 0f, 0f);
+    }
+    // Update is called once per frame
+    public static void Updateinfo (int wave) {
         var can = FindObjectOfType<Canvas>();
         spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
-        //imfo.text = "Wave" + string.Format("{0}", Assets.Code.Spawning.wave).PadLeft(1, '0') + "        " + "MonsterNumber" + string.Format("{0}", omnsternumber).PadLeft(1, '0');
     }
   /*  public static void hideinfo()
     {
@@ -38,36 +42,31 @@ public class GameImfomation : MonoBehaviour {
     public void infomoving(int nextwave,float timeratio)
     {
         // Debug.Log("moving" + nextwave);
-        gameObject.transform.position = gameObject.transform.position + new Vector3(-20f, 0f, 0f) * timeratio;
+        gameObject.transform.position = gameObject.transform.position + new Vector3(-25f, 0f, 0f) * timeratio;
 
     }
     public static void eclipse(int wave)
     {
-        foreach (Text wavename in test)
-        {
-            if (wavename.name == "Text" + wave.ToString())
-            {
+
                 //Debug.Log(wavename.transform.position);
                 //Debug.Log("Text" + wave.ToString() + "Fuck you");
-                wavename.text = "";
+                //wavename.text = "";
 
-            }
-        }
+            
+        
     }
-    public static void GetWaveInfo(int wave,int maxnum,float damage,float speed)
+    public static void GetWaveInfo(int wave,int normnum,float damage,float speed)
     {
         info_wave = wave;
-        info_maxnum = maxnum;
+        info_normnum = normnum;
         info_speed = speed;
         info_damage = damage;
-        foreach (Text wavename in test)
-        {
-            if (wavename.name == "Text" + wave.ToString())
-            {
-                wavename.text = "Wave" + wave + "\r\n" + info_maxnum + "\r\n" + info_speed + "\r\n" + info_damage;
+        test.text = "Wave:" + wave + "\r\nNormal:" + info_normnum + "\r\nFast:" + info_speed + "\r\nfast:" + info_damage;
+        var tra = test.GetComponent<Transform>();
+        tra.position = new Vector3(470f,25f,0f);
 
-            }
-        }
+            
+        
     }
 
 }

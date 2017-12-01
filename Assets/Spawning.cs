@@ -84,11 +84,9 @@ namespace Assets.Code
             {
 
                 //GameImfomation.hideinfo();
+                if (monsternumber == 0 && !GameImfomation.isout())
+                { return; }
                 if ((Time.time - _lastspawn) < SpawnTime) return;
-                if (monsternumber == 0)
-                {
-                    Debug.Log("1st wave begins:" + Time.time);
-                }
                 //GameImfomation.eclipse(wave);
                 _lastspawn = Time.time;
                 Spawn(SpawnSeq[wave - 1][monsternumber]);
@@ -105,11 +103,9 @@ namespace Assets.Code
             {
 
                 //GameImfomation.hideinfo();
+                if (monsternumber == 0 && !GameImfomation.isout())
+                { return; }
                 if ((Time.time - _lastspawn) < SpawnTime) return;
-                if (monsternumber == 0)
-                {
-                    Debug.Log(wave + "st wave begins:" + Time.time);
-                }
                 //GameImfomation.eclipse(wave);
                 _lastspawn = Time.time;
                 Spawn(SpawnSeq[wave - 1][monsternumber]);

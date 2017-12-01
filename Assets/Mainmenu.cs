@@ -28,7 +28,7 @@ public class Mainmenu : MonoBehaviour
         cellobj = cell;
         var pos = cell.GetComponent<Transform>();
         cellpos = pos;
-        Debug.Log(gameObject.transform.position+ outpostion);
+        Debug.Log(gameObject.transform.position);
         if (gameObject.transform.position == outpostion)
         {
             if (MoneyManager.CurrentMoney < 20)

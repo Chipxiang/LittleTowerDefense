@@ -20,7 +20,7 @@ public class Freeze : MonoBehaviour {
             if(Time.time - _lastHit >= 1)
             {
                 _lastHit = Time.time;
-                GetComponent<Enemy>().Health -= 5f * freezeLevel;
+                GetComponent<Enemy>().Health -= 2f * freezeLevel;
             }
         }
         else

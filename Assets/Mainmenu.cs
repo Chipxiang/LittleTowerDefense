@@ -85,13 +85,13 @@ public class Mainmenu : MonoBehaviour
     {
         Debug.Log("hhh");
         gameObject.transform.position = outpostion;
-        StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
+        StartCoroutine(FindObjectOfType<FreezeTowerBlockCollection>().Spawn(cellobj));
     }
     void Shock()
     {
         Debug.Log("fff");
         gameObject.transform.position = outpostion;
-        StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
+        StartCoroutine(FindObjectOfType<ShockTowerBlockCollection>().Spawn(cellobj));
     }
 
     public void hidemenu()

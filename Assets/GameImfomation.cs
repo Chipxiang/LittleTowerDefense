@@ -23,6 +23,7 @@ public class GameImfomation : MonoBehaviour {
         spaw = FindObjectOfType<Assets.Code.Spawning>().GetComponent<Transform>();
         test = gameObject.GetComponentInChildren<Text>();
         icon = test.GetComponent<Transform>();
+
     }
     internal void FixedUpdate()
     {
@@ -39,12 +40,6 @@ public class GameImfomation : MonoBehaviour {
         //imfo.text = "";
 
     }*/
-    public void infomoving(int nextwave,float timeratio)
-    {
-        // Debug.Log("moving" + nextwave);
-        gameObject.transform.position = gameObject.transform.position + new Vector3(-25f, 0f, 0f) * timeratio;
-
-    }
     public static void eclipse(int wave)
     {
 
@@ -63,10 +58,18 @@ public class GameImfomation : MonoBehaviour {
         info_damage = damage;
         test.text = "Wave:" + wave + "\r\nNormal:" + info_normnum + "\r\nFast:" + info_speed + "\r\nfast:" + info_damage;
         var tra = test.GetComponent<Transform>();
-        tra.position = new Vector3(470f,25f,0f);
-
-            
-        
+        tra.position = new Vector3(Screen.width/2,30f,0f);   
     }
-
+    public static bool isout()
+    {
+        if (icon.position.x < 0)
+        {
+            test.text = "";
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

@@ -17,17 +17,17 @@ public class Freeze : MonoBehaviour {
         if (freezeLevel > 0)
         {
             GetComponent<MeshRenderer>().material.color = new Color32(0, 97, 242, 1);
-            GetComponent<NavMeshAgent>().speed = Mathf.Pow((2f / 3f), freezeLevel);
+            GetComponent<Enemy>().Speed = GetComponent<Enemy>().originalSpeed *Mathf.Pow((1f / 5f), freezeLevel);
             if(Time.time - _lastHit >= 1)
             {
                 _lastHit = Time.time;
-                GetComponent<Enemy>().Health -= 3f * freezeLevel;
+                GetComponent<Enemy>().Health -= 1f * freezeLevel;
             }
         }
         else
         {
             GetComponent<MeshRenderer>().material.color = originalColor;
-            GetComponent<NavMeshAgent>().speed = 1;
+            GetComponent<Enemy>().Speed = GetComponent<Enemy>().originalSpeed;
         }
     }
 }

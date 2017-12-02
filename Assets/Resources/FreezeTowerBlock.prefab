@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2ab61c4b564c746b76e969c031c733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyInRange: []
 --- !u!114 &114346708356485024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,7 +299,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.35, y: 0.35, z: 0.35}
+  m_Extents: {x: 0.3, y: 0.3, z: 0.3}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 0

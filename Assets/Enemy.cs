@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float Health;
     public float Damage;
     public float Speed;
+    public float originalSpeed;
     public int value;
     private NavMeshAgent agent;
     private Transform Target;
@@ -21,12 +22,14 @@ public class Enemy : MonoBehaviour
         Health = health;
         Damage = damage;
         value = val;
+        originalSpeed = speed;
         Speed = speed;
         var col = this.GetComponent<Renderer>();
         Target = FindObjectOfType<Base>().transform;
         this.agent = this.GetComponent<NavMeshAgent>();
         this.transform.position = new Vector3(0, 0.7f, 4);
         agent.destination = Target.position;
+        agent.speed = Speed;
         GetComponent<Freeze>().freezeLevel = 0;
         if (type == 1)//fast ene
         {
@@ -59,10 +62,11 @@ public class Enemy : MonoBehaviour
     }
 
     void FixedUpdate() {
+        agent.destination = Target.position;
+        agent.speed = Speed;
         if (Health <= 0)
         {
             Destroy(gameObject);
-            
             MoneyManager.AddMoney(value);
         }
     }

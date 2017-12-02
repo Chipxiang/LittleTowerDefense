@@ -10,12 +10,12 @@ namespace Assets.Code
     {
         private bool winflag;
         private float[] Health = new float[3] { 20f, 15f, 35f };
-        private float[] Damage = new float[3] { 4f, 3f, 8f };
-        private float[] Speed = new float[3] { 0.7f, 1.2f, 0.4f };
+        private float[] Damage = new float[3] { 5f, 4f, 9f };
+        private float[] Speed = new float[3] { 1f, 1.5f, 0.7f };
         private int[] value = new int[3] { 5, 4, 7 };
         //private const float WaveCd = 20f;
         public const float WaveCd = 10f;
-        private const float SpawnTime = 0.7f;
+        private const float SpawnTime = 1.2f;
         private int[] MaxMonsterCount = new int[9] { 5, 10, 15, 12, 24, 24, 30, 36, 38 };
         private int[] NorMonsterNum = new int[9] { 5, 10, 10, 10, 20, 10, 10, 15, 15 };
         private int[] FasMonsterNum = new int[9] { 0, 0, 5, 0, 0, 10, 14, 15, 15 };
@@ -101,7 +101,23 @@ namespace Assets.Code
                 if (gameObject.transform.childCount == 0)
                 { nextwave(); }
             }
-
+            if (wave > MAX_WAVE && !winflag)
+            {
+                var aa = FindObjectOfType<Spawning>().transform;
+                var d = aa.childCount;
+                if (d == 0)
+                {
+                    Time.timeScale = 0;
+                    GameObject w = (GameObject)Instantiate((GameObject)Resources.Load("WIN"));
+                    w.GetComponent<Transform>().SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
+                    w.GetComponent<Transform>().position = new Vector3(250, 150, 0);
+                }
+                foreach (Cell g in GameObject.FindObjectsOfType<Cell>())
+                {
+                    g.GetComponent<Cell>().enabled = false;
+                }
+                winflag = true;
+            }
             else if ((wave > 1 && wave <= MAX_WAVE) && (Time.time - spawn_time) >= WaveCd && monsternumber < MaxMonsterCount[wave - 1])
             {
 
@@ -121,31 +137,19 @@ namespace Assets.Code
                     { nextwave(); }
                 }
             }
-            if (wave > MAX_WAVE && !winflag)
-            {
-                var aa = FindObjectOfType<Spawning>().transform;
-                var d = aa.childCount;
-                if (d == 0)
-                {
-                    Time.timeScale = 0;
-                    GameObject w = (GameObject)Instantiate((GameObject)Resources.Load("WIN"));
-                    w.GetComponent<Transform>().SetParent(GameObject.Find("Canvas").GetComponent<Transform>());
-                    w.GetComponent<Transform>().position = new Vector3(250, 150, 0);
-                }
-                foreach (Cell g in GameObject.FindObjectsOfType<Cell>())
-                {
-                    g.GetComponent<Cell>().enabled = false;
-                }
-                winflag = true;
-            }
+
         }
         void nextwave()
         {
-            Debug.Log(wave + "st wave ends:" + Time.time);
             wave++;
-            spawn_time = Time.time;
-            monsternumber = 0;
-            GameImfomation.GetWaveInfo(wave, NorMonsterNum[wave-1], StrMonsterNum[wave-1], FasMonsterNum[wave-1]);
+            if (wave <= MAX_WAVE )
+            {
+                Debug.Log(wave + "st wave ends:" + Time.time);
+
+                spawn_time = Time.time;
+                monsternumber = 0;
+                GameImfomation.GetWaveInfo(wave, NorMonsterNum[wave - 1], StrMonsterNum[wave - 1], FasMonsterNum[wave - 1]);
+            }
         }
         private void Spawn(int type)
         {
@@ -163,7 +167,6 @@ namespace Assets.Code
             Quaternion rotation = Quaternion.Euler(0, 0, 0);
             var ast = (GameObject)Object.Instantiate(_EnemyPrefab, pos, rotation, _holder);
             var s = ast.GetComponentInChildren<Enemy>();
-            var spe = s.GetComponent<NavMeshAgent>().speed = Speed[type];
             s.Initialize(Health[type], Damage[type], Speed[type], value[type], type);
 
         }

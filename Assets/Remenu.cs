@@ -62,6 +62,7 @@ using UnityEngine.UI;
             Debug.Log("destoryy~~");
             gameObject.transform.position = outpostion;
             cellobject.GetComponent<Cell>().isBuilt = false;
+            isshow = false;
     }
 
     public void hidemenu()

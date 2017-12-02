@@ -73,7 +73,7 @@ public class Mainmenu : MonoBehaviour
             isshow = true;
             //gameObject.transform.position = pos.position;
         }
-        else if (gameObject.transform.position != outpostion)
+        else//(gameObject.transform.position != outpostion)
         {
             isshow = false;
             gameObject.transform.position = outpostion;
@@ -107,12 +107,14 @@ public class Mainmenu : MonoBehaviour
     void Basic()
     {
         Debug.Log("rua");
+        isshow = false;
         gameObject.transform.position = outpostion;
         StartCoroutine(FindObjectOfType<TowerBlockCollection>().Spawn(cellobj));
     }
 
     void Frozen()
     {
+        isshow = false;
         Debug.Log("hhh");
         gameObject.transform.position = outpostion;
         StartCoroutine(FindObjectOfType<FreezeTowerBlockCollection>().Spawn(cellobj));
@@ -120,6 +122,7 @@ public class Mainmenu : MonoBehaviour
     void Shock()
     {
         Debug.Log("fff");
+        isshow = false;
         gameObject.transform.position = outpostion;
         StartCoroutine(FindObjectOfType<ShockTowerBlockCollection>().Spawn(cellobj));
     }
@@ -127,6 +130,7 @@ public class Mainmenu : MonoBehaviour
     public void hidemenu()
     {
         Debug.Log("hide");
+        isshow = false;
         gameObject.transform.position = outpostion;
         Debug.Log(outpostion);
     }

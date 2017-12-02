@@ -18,15 +18,15 @@ public class Enemy : MonoBehaviour
     }
     public void Initialize (float health, float damage,float speed,int val,int type)
     {
+        Health = health;
+        Damage = damage;
+        value = val;
+        Speed = speed;
         var col = this.GetComponent<Renderer>();
         Target = FindObjectOfType<Base>().transform;
         this.agent = this.GetComponent<NavMeshAgent>();
         this.transform.position = new Vector3(0, 0.7f, 4);
         agent.destination = Target.position;
-        Health = health;
-        Damage = damage;
-        value = val;
-        Speed = speed;
         GetComponent<Freeze>().freezeLevel = 0;
         if (type == 1)//fast ene
         {

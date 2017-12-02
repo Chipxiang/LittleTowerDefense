@@ -17,6 +17,8 @@ public class GameImfomation : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        var aa = gameObject.GetComponent<RectTransform>();
+        
         endPosition = new Vector3(-35, 20, 0);
         imfo = gameObject.GetComponent<Text>();
         //Updateinfo(1,10);
@@ -56,7 +58,7 @@ public class GameImfomation : MonoBehaviour {
         info_normnum = normnum;
         info_speed = speed;
         info_damage = damage;
-        test.text = "Wave:" + wave + "\r\nNormal:" + info_normnum + "\r\nFast:" + info_speed + "\r\nfast:" + info_damage;
+        test.text = "Wave:" + wave + "\r\nNormal:" + info_normnum + "\r\nFast:" + info_speed + "\r\nStrong:" + info_damage;
         var tra = test.GetComponent<Transform>();
         tra.position = new Vector3(Screen.width/2, Screen.height/20f, 0f);   
     }

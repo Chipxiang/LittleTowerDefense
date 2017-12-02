@@ -8,10 +8,11 @@ namespace Assets.Code
 {
     public class Spawning : MonoBehaviour
     {
-        private float[] Health = new float[3] { 20f, 15f, 33f };
-        private float[] Damage = new float[3] { 2f, 1f, 5f };
-        private float[] Speed = new float[3] { 0.7f, 1f, 0.5f };
-        private int[] value = new int[3] { 5, 3, 7 };
+        private bool winflag;
+        private float[] Health = new float[3] { 20f, 15f, 35f };
+        private float[] Damage = new float[3] { 4f, 3f, 8f };
+        private float[] Speed = new float[3] { 0.7f, 1.2f, 0.4f };
+        private int[] value = new int[3] { 5, 4, 7 };
         //private const float WaveCd = 20f;
         public const float WaveCd = 10f;
         private const float SpawnTime = 0.7f;
@@ -21,8 +22,9 @@ namespace Assets.Code
         private int[] StrMonsterNum = new int[9] { 0, 0, 0, 2, 4, 4, 6, 6, 8 };
         //private int[,]SpawnSeq;
         private int[][] SpawnSeq = new int[9][] { new int[5]{ 0, 0, 0, 0, 0 }, new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, new int[15] { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 },
-            new int[12]{0, 0, 0, 0, 0, 2, 2,0, 0, 0, 0, 0 }, new int[24]{0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0}, new int[24]{0,0,0,0,0,0,0,0,0,0,2,2,2,2,1,1,1,1,1,1,1,1,1,1 }
-            , new int[15]{0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 }, new int[15]{0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 }, new int[15]{0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 } };
+            new int[12]{0, 0, 0, 0, 0, 2, 2,0, 0, 0, 0, 0 }, new int[24]{0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0}, new int[24]{0,0,0,0,0,0,0,0,0,0,2,2,2,2,1,1,1,1,1,1,1,1,1,1 },
+             new int[30]{0,0,1,1,1,0,0,2,1,1,0,0,1,1,1,0,0,2,1,1,1,0,0,2,1,1,1,2,2,2 }, new int[36]{0,0,0,0,0,1,1,1,1,1,2,2,0,0,0,0,0,1,1,1,1,1,2,2,0,0,0,0,0,1,1,1,1,1,2,2},
+            new int[38]{0,0,0,0,0,0,0,0,0,0,2,2,2,2,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,2,2,2,2 } };
         private const int MAX_WAVE = 9;
         private static Object _EnemyPrefab;
         private float _lastspawn;
@@ -60,6 +62,7 @@ namespace Assets.Code
             spawn_time = 10f;
             monsternumber = 0;
             flag = 0;
+            winflag = false;
         }
         internal void Update()
         {
@@ -93,7 +96,7 @@ namespace Assets.Code
                 //FindObjectOfType<GameImfomation>().infomoving(wave + 1, ratio);
                 monsternumber++;
             }
-            else if (monsternumber >= MaxMonsterCount[wave - 1])
+            else if (wave<= MAX_WAVE && monsternumber >= MaxMonsterCount[wave - 1])
             {
                 if (gameObject.transform.childCount == 0)
                 { nextwave(); }
@@ -118,7 +121,7 @@ namespace Assets.Code
                     { nextwave(); }
                 }
             }
-            if (wave > MAX_WAVE)
+            if (wave > MAX_WAVE && !winflag)
             {
                 var aa = FindObjectOfType<Spawning>().transform;
                 var d = aa.childCount;
@@ -133,6 +136,7 @@ namespace Assets.Code
                 {
                     g.GetComponent<Cell>().enabled = false;
                 }
+                winflag = true;
             }
         }
         void nextwave()

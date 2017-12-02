@@ -32,6 +32,6 @@ public class MoneyManager : MonoBehaviour
             // Update is called once per frame
              private static void UpdateScore()
         {
-            money.text = string.Format("{0}", CurrentMoney).PadLeft(4, '0');
+            money.text = "$"+ string.Format("{0}", CurrentMoney).PadLeft(4, '0');
         }
     }

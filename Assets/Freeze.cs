@@ -6,9 +6,10 @@ using UnityEngine.AI;
 public class Freeze : MonoBehaviour {
     public int freezeLevel;
     public float _lastHit;
+    private Color originalColor;
 	// Use this for initialization
 	void Start () {
-		
+        originalColor = this.GetComponent<MeshRenderer>().material.color;
 	}
 	
 	// Update is called once per frame
@@ -20,12 +21,12 @@ public class Freeze : MonoBehaviour {
             if(Time.time - _lastHit >= 1)
             {
                 _lastHit = Time.time;
-                GetComponent<Enemy>().Health -= 2f * freezeLevel;
+                GetComponent<Enemy>().Health -= 3f * freezeLevel;
             }
         }
         else
         {
-            GetComponent<MeshRenderer>().material.color = new Color32(255, 255, 255, 1);
+            GetComponent<MeshRenderer>().material.color = originalColor;
             GetComponent<NavMeshAgent>().speed = 1;
         }
     }

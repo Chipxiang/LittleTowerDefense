@@ -69,6 +69,7 @@ using UnityEngine.UI;
     {
         //Debug.Log("hide");
         gameObject.transform.position = outpostion;
+        isshow = false;
         //Debug.Log(outpostion);
 
     }

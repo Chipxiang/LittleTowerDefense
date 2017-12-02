@@ -14,8 +14,8 @@ using UnityEngine.UI;
          GameObject cellobject;
         void Start()
         {
-            outpostion = new Vector3(-100f, -300f, 0f);
-            gameObject.transform.position = outpostion;
+            outpostion = gameObject.transform.position;
+            //gameObject.transform.position = outpostion;
             gameObject.SetActive(true);
             isshow = false;
             maincam = FindObjectOfType<Camera>();
@@ -65,9 +65,9 @@ using UnityEngine.UI;
 
     public void hidemenu()
     {
-        Debug.Log("hide");
+        //Debug.Log("hide");
         gameObject.transform.position = outpostion;
-        Debug.Log(outpostion);
+        //Debug.Log(outpostion);
 
     }
     // Update is called once per frame

@@ -15,8 +15,8 @@ public class Mainmenu : MonoBehaviour
     Transform cellpos;
     void Start()
     {
-        outpostion = new Vector3(-600f, -600f, 0f);
-        gameObject.transform.position = outpostion;
+        outpostion = gameObject.transform.position;
+        //gameObject.transform.position = outpostion;
         gameObject.SetActive(true);
         isshow = false;
         maincam = FindObjectOfType<Camera>();
@@ -28,7 +28,7 @@ public class Mainmenu : MonoBehaviour
         cellobj = cell;
         var pos = cell.GetComponent<Transform>();
         cellpos = pos;
-        Debug.Log(gameObject.transform.position);
+        //Debug.Log(gameObject.transform.position);
         if (gameObject.transform.position == outpostion)
         {
             if (MoneyManager.CurrentMoney < 20)

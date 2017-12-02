@@ -58,7 +58,7 @@ public class GameImfomation : MonoBehaviour {
         info_damage = damage;
         test.text = "Wave:" + wave + "\r\nNormal:" + info_normnum + "\r\nFast:" + info_speed + "\r\nfast:" + info_damage;
         var tra = test.GetComponent<Transform>();
-        tra.position = new Vector3(Screen.width/2,30f,0f);   
+        tra.position = new Vector3(Screen.width/2, Screen.height/20f, 0f);   
     }
     public static bool isout()
     {

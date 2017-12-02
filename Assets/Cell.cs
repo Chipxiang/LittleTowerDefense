@@ -28,7 +28,7 @@ using UnityEngine;
                 {
             return;
                   }
-            Debug.Log(gameObject.name);
+            //Debug.Log(gameObject.name);
             if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
                  if (isBuilt == false)
@@ -38,14 +38,14 @@ using UnityEngine;
                 var currpos = ttmp.transform.position;
                 if (currpos != outpos)
                 {
-                    Debug.Log(currpos);
+                    //Debug.Log(currpos);
                     ttmp.hidemenu();
                 }
 
                 //var ff = Object.FindObjectOfType<Mainmenu>();
                 //Debug.Log(ff.name);
                 //Debug.Log(menu.name);
-                Debug.Log(gameObject.name+ "builtmenu");
+                //Debug.Log(gameObject.name+ "builtmenu");
                         var ff = GameObject.FindObjectOfType<Mainmenu>();
                         ff.dispalymenu(gameObject);
 

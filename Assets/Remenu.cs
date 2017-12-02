@@ -27,7 +27,7 @@ using UnityEngine.UI;
         cellobject = cellobj;
             tower = toweron;
             var pos = cellobj.transform;
-            if (gameObject.transform.position == outpostion)
+            if (!isshow)
             {
                 Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
                 Debug.Log("screenPos"+screenPos);
@@ -35,11 +35,12 @@ using UnityEngine.UI;
             //Debug.Log(screenPos);
             screenPos.x = screenPos.x - 3f;
             gameObject.transform.position = screenPos;
-                //gameObject.transform.position = pos.position;
+            //gameObject.transform.position = pos.position;
+            isshow = true;
             }
             else if (gameObject.transform.position != outpostion)
             {
-                //isshow = false;
+                isshow = false;
                 gameObject.transform.position = outpostion;
             }
 

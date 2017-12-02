@@ -13,6 +13,7 @@ public class Mainmenu : MonoBehaviour
     Camera maincam;
     GameObject cellobj;
     Transform cellpos;
+    int[] Tower_Val;
     void Start()
     {
         outpostion = gameObject.transform.position;
@@ -22,6 +23,7 @@ public class Mainmenu : MonoBehaviour
         maincam = FindObjectOfType<Camera>();
         //Debug.Log(outpostion);
         InitializeButtons();
+        Tower_Val = new int[3] { 20, 25, 25 };
     }
     public void dispalymenu(GameObject cell)
     {
@@ -29,11 +31,38 @@ public class Mainmenu : MonoBehaviour
         var pos = cell.GetComponent<Transform>();
         cellpos = pos;
         //Debug.Log(gameObject.transform.position);
-        if (gameObject.transform.position == outpostion)
+        Button[] bu = gameObject.GetComponentsInChildren<Button>();
+        foreach (var butt in bu){
+            if (butt.name == "BuildBasic")
+            {
+                if (MoneyManager.CurrentMoney < 20)
+                {
+                    butt.interactable = false;
+                }
+                else butt.interactable = true;
+            }
+            else if (butt.name == "BuildFrozen")
+            {
+                if (MoneyManager.CurrentMoney < 25)
+                {
+                    butt.interactable = false;
+                }
+                else butt.interactable = true;
+            }
+            else if (butt.name == "BuildShock")
+            {
+                if (MoneyManager.CurrentMoney < 25)
+                {
+                    butt.interactable = false;
+                }
+                else butt.interactable = true;
+            }
+        }
+        if (!isshow)
         {
-            if (MoneyManager.CurrentMoney < 20)
+           /* if (MoneyManager.CurrentMoney < 20)
                 gameObject.GetComponentInChildren<Button>().interactable = false;
-            else gameObject.GetComponentInChildren<Button>().interactable = true;
+            else gameObject.GetComponentInChildren<Button>().interactable = true;*/
             Vector3 screenPos = maincam.WorldToScreenPoint(pos.position);
 
         screenPos.x = screenPos.x - 3f;
@@ -41,11 +70,12 @@ public class Mainmenu : MonoBehaviour
         //Debug.Log(pos.position);
         //Debug.Log(screenPos);
         gameObject.transform.position = screenPos;
+            isshow = true;
             //gameObject.transform.position = pos.position;
         }
         else if (gameObject.transform.position != outpostion)
         {
-            //isshow = false;
+            isshow = false;
             gameObject.transform.position = outpostion;
         }
 

@@ -11,7 +11,7 @@ namespace Assets.Code
         private float[] Health = new float[3] { 20f, 15f, 33f };
         private float[] Damage = new float[3] { 2f, 1f, 5f };
         private float[] Speed = new float[3] { 0.7f, 1f, 0.5f };
-        private int[] value = new int[3] { 10, 8, 15 };
+        private int[] value = new int[3] { 5, 3, 7 };
         //private const float WaveCd = 20f;
         public const float WaveCd = 10f;
         private const float SpawnTime = 0.7f;
